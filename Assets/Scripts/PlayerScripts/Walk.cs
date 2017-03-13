@@ -15,21 +15,24 @@ public class Walk : MonoBehaviour
 	void Start ()
 	{
 	    _charCtrl = GetComponent<CharacterController>();
-	    _gvrViewer = transform.GetChild(0).GetComponent<GvrViewer>();
+
+	    //_gvrViewer = transform.GetChild(0).GetComponent<GvrViewer>();
 	    _vrHead = Camera.main.transform;
 	}
 	
 	// Update is called once per frame
 	void Update ()
-    {
-        //if (Input.GetButton("Fire1"))
-        //{
-        //    _moveForward = !_moveForward;
-        //}
+	{
+        Vector3 forward = _vrHead.TransformDirection(Vector3.forward);
         if (Input.GetButton("Fire1"))
         {
-            Vector3 forward = _vrHead.TransformDirection(Vector3.forward);
-            _charCtrl.SimpleMove(forward*MoveSpeed);
+            MoveSpeed = 5.0f;
         }
-	}
+        else
+        {
+            MoveSpeed = 0.0f;
+        }
+        _charCtrl.SimpleMove(forward * MoveSpeed);
+        
+    }
 }
