@@ -257,7 +257,7 @@ public class OVRPlayerController : MonoBehaviour
 
 		// Compute this for key movement
 		float moveInfluence = Acceleration * 0.1f * MoveScale * MoveScaleMultiplier;
-
+       
 		// Run!
 		if (dpad_move || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
 			moveInfluence *= 2.0f;
@@ -276,7 +276,12 @@ public class OVRPlayerController : MonoBehaviour
 		if (moveRight)
 			MoveThrottle += ort * (transform.lossyScale.x * moveInfluence * BackAndSideDampen * Vector3.right);
 
-		Vector3 euler = transform.rotation.eulerAngles;
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Jump();
+        }
+
+        Vector3 euler = transform.rotation.eulerAngles;
 
 		bool curHatLeft = OVRInput.Get(OVRInput.Button.PrimaryShoulder);
 
