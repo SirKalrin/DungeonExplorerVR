@@ -18,4 +18,9 @@ public class MeleeWeapon : Weapon {
 	void Update () {
 		
 	}
+
+    public override void Attack()
+    {
+        
+    }
 }

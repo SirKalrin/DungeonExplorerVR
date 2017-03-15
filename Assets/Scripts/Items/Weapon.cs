@@ -24,4 +24,6 @@ public abstract class Weapon : Equipment
 	void Update () {
 		
 	}
+
+    public abstract void Attack();
 }
