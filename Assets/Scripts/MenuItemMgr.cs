@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class MenuItemMgr : MonoBehaviour
 {
     public Light LightSource;
+    [SerializeField]
+    private GvrReticlePointer _pointer;
 
     public void BClicked()
     {
@@ -22,11 +24,13 @@ public class MenuItemMgr : MonoBehaviour
 
     public void PointerEntered()
     {
+        _pointer.GetComponent<MeshRenderer>().enabled = true;
         LightSource.enabled = true;
         transform.position = new Vector3(transform.position.x + 0.2f, transform.position.y, transform.position.z);
     }
     public void PointerExited()
     {
+        _pointer.GetComponent<MeshRenderer>().enabled = false;
         LightSource.enabled = false;
         transform.position = new Vector3(transform.position.x - 0.2f, transform.position.y, transform.position.z);
     }
