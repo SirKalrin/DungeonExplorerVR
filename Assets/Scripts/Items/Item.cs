@@ -14,6 +14,8 @@ public abstract class Item : MonoBehaviour
 
     public ClassType ClassRequired;
 
+    public List<Attribute> Attributes;
+
     // Use this for initialization
     void Start () {
 		
