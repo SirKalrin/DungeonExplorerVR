@@ -7,9 +7,8 @@ public abstract class Equipment : Item
 {
 
     public Quality Quality;
-    public int Durability;
-
-    public List<Attribute> Attributes;
+    public int MaxDurability;
+    public int Durability;  
 
     // Use this for initialization
     void Start () {

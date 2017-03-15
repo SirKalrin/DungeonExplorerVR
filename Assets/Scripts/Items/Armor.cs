@@ -7,7 +7,7 @@ public class Armor : Equipment
 {
     public ArmorType ArmorType;
 
-    public double PhysicalArmor;
+    public double Defense;
 
     // Use this for initialization
     void Start () {

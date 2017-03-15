@@ -2,15 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Equipped : MonoBehaviour {
+public class Equipped : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public Armor Headgear;
+    public Armor Torso;
+    public Armor Legs;
+    public Armor Gloves;
+    public Armor Boots;
+    public Armor Cape;
+    
+    public Equipment LeftRing;
+    public Equipment RightRing;
+    public Equipment Neckless;
+    public Equipment LeftEar;
+    public Equipment RightEar;
+
+    public Weapon Weapon1;
+    public Weapon Weapon2;
 }
