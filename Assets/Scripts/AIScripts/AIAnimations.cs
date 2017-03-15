@@ -29,7 +29,7 @@ public class AIAnimations : MonoBehaviour
     public void DoAttackAnimation()
     {
         animator.SetBool("IsAttacking", true);
-        if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Footman_Attack"))
+        if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
             animator.SetBool("IsAttacking", false);
             animator.SetBool("IsWalking", false);
