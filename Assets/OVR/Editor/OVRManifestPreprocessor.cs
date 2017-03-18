@@ -4,7 +4,7 @@ using System.IO;
 
 class OVRManifestPreprocessor 
 {
-	[MenuItem("Tools/Oculus/Create store-compatible AndroidManifest.xml", false, 100000)]	
+	[UnityEditor.MenuItem("Tools/Oculus/Create store-compatible AndroidManifest.xml", false, 100000)]	
 	static void GenerateManifestForSubmission() 
 	{
 		string srcFile = Application.dataPath + "/OVR/Editor/AndroidManifest.OVRSubmission.xml";

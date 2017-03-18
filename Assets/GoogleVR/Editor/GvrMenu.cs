@@ -1,4 +1,4 @@
-// Copyright 2015 Google Inc. All rights reserved.
+﻿// Copyright 2015 Google Inc. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,37 +16,37 @@ using UnityEngine;
 using UnityEditor;
 
 public class GvrMenu {
-  [MenuItem("GoogleVR/Documentation/Developers Site", false, 100)]
+  [UnityEditor.MenuItem("GoogleVR/Documentation/Developers Site", false, 100)]
   private static void OpenDocumentation() {
     Application.OpenURL("https://developers.google.com/vr");
   }
 
-  [MenuItem("GoogleVR/Documentation/Unity Guide", false, 100)]
+  [UnityEditor.MenuItem("GoogleVR/Documentation/Unity Guide", false, 100)]
   private static void OpenUnityGuide() {
     Application.OpenURL("https://developers.google.com/vr/unity/guide");
   }
 
-  [MenuItem("GoogleVR/Documentation/Release Notes", false, 100)]
+  [UnityEditor.MenuItem("GoogleVR/Documentation/Release Notes", false, 100)]
   private static void OpenReleaseNotes() {
     Application.OpenURL("https://developers.google.com/vr/unity/release-notes");
   }
 
-  [MenuItem("GoogleVR/Documentation/Known Issues", false, 100)]
+  [UnityEditor.MenuItem("GoogleVR/Documentation/Known Issues", false, 100)]
   private static void OpenKnownIssues() {
     Application.OpenURL("https://developers.google.com/vr/unity/release-notes#known_issues");
   }
 
-  [MenuItem("GoogleVR/Editor Settings", false, 100)]
+  [UnityEditor.MenuItem("GoogleVR/Editor Settings", false, 100)]
   private static void OpenEditorSettings() {
     EditorWindow.GetWindow(typeof(GvrEditorSettings));
   }
 
-  [MenuItem("GoogleVR/Report Bug", false, 100)]
+  [UnityEditor.MenuItem("GoogleVR/Report Bug", false, 100)]
   private static void OpenReportBug() {
     Application.OpenURL("https://github.com/googlesamples/cardboard-unity/issues");
   }
 
-  [MenuItem("GoogleVR/About Google VR", false, 200)]
+  [UnityEditor.MenuItem("GoogleVR/About Google VR", false, 200)]
   private static void OpenAbout() {
     EditorUtility.DisplayDialog("Google VR SDK for Unity",
         "Version: " + GvrViewer.GVR_SDK_VERSION + "\n\n"

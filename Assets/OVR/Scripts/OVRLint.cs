@@ -74,7 +74,7 @@ public static class OVRLint
 	///Use of Unity WWW (exceptionally high overhead for large file downloads, but acceptable for tiny gets).
 	///Declared but empty Awake/Start/Update/OnCollisionEnter/OnCollisionExit/OnCollisionStay.  Also OnCollision* star methods that declare the Collision  argument but do not reference it (omitting it short-circuits the collision contact calculation).
 
-	[MenuItem("Tools/Oculus/Lint")]
+	[UnityEditor.MenuItem("Tools/Oculus/Lint")]
 	static void RunCheck()
 	{
 		CheckStaticCommonIssues();

@@ -178,7 +178,7 @@ class OVRScreenshotWizard : ScriptableWizard
 	/// <summary>
 	/// Unity Editor menu option to take a screenshot
 	/// </summary>
-	[MenuItem("Tools/Oculus/OVR Screenshot Wizard",false,100000)]	
+	[UnityEditor.MenuItem("Tools/Oculus/OVR Screenshot Wizard",false,100000)]	
 	static void TakeOVRScreenshot() 
 	{
         OVRScreenshotWizard wizard = ScriptableWizard.DisplayWizard<OVRScreenshotWizard>("OVR Screenshot Wizard", "Render Cubemap");
