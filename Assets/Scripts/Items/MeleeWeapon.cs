@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MeleeWeapon : Weapon {
 
+    public DamageType PhysicalDamageType;
     public double MinPhysicalDamage;
     public double MaxPhysicalDamage;
     public double MinElementalDamage;

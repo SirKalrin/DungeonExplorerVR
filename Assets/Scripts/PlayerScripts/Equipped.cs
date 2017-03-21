@@ -18,6 +18,16 @@ public class Equipped : MonoBehaviour
     public Equipment LeftEar;
     public Equipment RightEar;
 
-    public Weapon Weapon1;
-    public Weapon Weapon2;
+    public Weapon Mainhand;
+    public Item Offhand;
+
+    void Start()
+    {
+       
+    }
+
+    void Update()
+    {
+        transform.forward = Camera.main.transform.TransformDirection(Vector3.forward);
+    }
 }

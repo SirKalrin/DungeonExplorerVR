@@ -6,7 +6,6 @@ public abstract class Weapon : Equipment
 {
     public WeaponType WeaponType;
     public ElementalType ElementalDamageType;
-    public DamageType PhysicalDamageType;
 
     public float Range;
     public float AttackSpeed;

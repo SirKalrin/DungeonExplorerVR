@@ -34,5 +34,5 @@ public class Walk : MonoBehaviour
         }
         _charCtrl.SimpleMove(forward * MoveSpeed);
         
-    }
+	}
 }
