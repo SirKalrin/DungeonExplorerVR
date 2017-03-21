@@ -1,36 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AIMovements : MonoBehaviour
 {
     public int MoveSpeed = 3; //move speed
     private Transform myTransform; //current transform data of this enemy
+    private NavMeshAgent agent;
 
     void Start()
     {
         myTransform = transform; //cache transform data for easy access/preformance
-    }
-
-    void FixedUpdate()
-    {
-
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>(); ;
     }
 
     // Rotate towards target Player
     public void RotateTowardsTarget(float distance, Transform enemyTarget)
     {
-        var localTarget = transform.InverseTransformPoint(enemyTarget.transform.position);
-        var angle = Mathf.Atan2(localTarget.x, localTarget.z)*Mathf.Rad2Deg;
-        Vector3 eulerAngleVelocity = new Vector3(0, angle, 0);
-        Quaternion deltaRotation = Quaternion.Euler(eulerAngleVelocity*Time.deltaTime*10);
-        gameObject.GetComponent<Rigidbody>().MoveRotation(gameObject.GetComponent<Rigidbody>().rotation*deltaRotation);
+        Vector3 direction = (enemyTarget.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));    // flattens the vector3
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * MoveSpeed);
     }
 
     // Go towards target Player
-    public void MoveForward()
+    public void MoveForward(Vector3 target)
     {
-        myTransform.position += myTransform.forward * MoveSpeed * Time.deltaTime;
+        agent.destination = target;
     }
 
 }
