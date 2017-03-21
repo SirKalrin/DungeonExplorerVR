@@ -10,6 +10,7 @@ public class AIController : MonoBehaviour
     private AIAnimations animationController;
     private GameObject target; //the enemy's target
     private Transform myTransform;
+    private Vector3 startPosition;
 
     public float DetectionDistance = 7;
     public float AttackDistance = 2;
@@ -17,39 +18,49 @@ public class AIController : MonoBehaviour
 
     void Start()
     {
-        //target = GameObject.FindWithTag("Player").transform; //target the player
         movementController = transform.GetComponent<AIMovements>();
         animationController = transform.GetComponent<AIAnimations>();
-        myTransform = transform;
+        myTransform = this.transform;
+
+        startPosition = new Vector3(this.transform.position.x, 0.5200002f, transform.position.z);
     }
 
     // Update is called once per frame
     void Update()
     {
+
+
         // If there is a target in radius
         if (target != null)
         {
             var distance = Vector3.Distance(myTransform.position, target.transform.position);
-            //Debug.Log("Orc position" + myTransform.position);
-            //Debug.Log("Our position" + target.transform.position);
             EngageTarget(distance);
+        }
+        else if(Vector3.Distance(transform.position, startPosition) > 1)
+        {
+            movementController.MoveForward(startPosition);
+            animationController.StopAttackAnimation();
+            animationController.StartWalkAnimation();
+        }
+        else
+        {
+            animationController.StopWalkAnimation();
         }
     }
 
     private void EngageTarget(float distance)
     {
-        //Debug.Log("Distance: " + distance);
-        //Debug.Log("ATKDistance: " + AttackDistance);
         movementController.RotateTowardsTarget(distance, target.transform);
 
         if (distance > AttackDistance)
         {
-                movementController.MoveForward();
+                movementController.MoveForward(target.transform.position);
                 animationController.StopAttackAnimation();
                 animationController.StartWalkAnimation();
         }
         else
         {
+            movementController.MoveForward(transform.position);
             animationController.DoAttackAnimation();
         }
     }
@@ -58,7 +69,16 @@ public class AIController : MonoBehaviour
     {
         if (target == null && col.tag == "Player")
         {
-            target = col.gameObject;
+            RaycastHit rayHit;
+
+            Physics.Linecast(transform.position, col.transform.position, out rayHit);
+            Debug.Log("AI position: " + transform.position);
+            Debug.Log("Player position: " + col.transform.position);
+            Debug.Log("direction: " + (col.transform.position - transform.position));
+            if (rayHit.transform.tag.Equals("Player"))
+            {
+                target = col.gameObject;
+            }
         }
     }
 
@@ -70,4 +90,5 @@ public class AIController : MonoBehaviour
             animationController.StopWalkAnimation();
         }
     }
+
 }
