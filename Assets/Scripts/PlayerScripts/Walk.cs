@@ -14,6 +14,7 @@ public class Walk : MonoBehaviour
     // Use this for initialization
 	void Start ()
 	{
+        Debug.Log("walk");
 	    _charCtrl = GetComponent<CharacterController>();
 
 	    //_gvrViewer = transform.GetChild(0).GetComponent<GvrViewer>();
