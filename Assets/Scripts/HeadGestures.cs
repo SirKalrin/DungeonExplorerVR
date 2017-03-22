@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class HeadGestures : MonoBehaviour
 {
-    private List<Vector3> _angles;
-    private Vector3 _centerAngle;
+    private Quaternion _centerAngle;
     private float _timeStamp;
     private bool? _reaction;
+    private bool _right, _left, _up, _down;
 
-    // Use this for initialization
-	void Start ()
+    void Start ()
     {
-        _angles = new List<Vector3>();
         _timeStamp = 0;
-        _centerAngle = GvrViewer.Instance.HeadPose.Orientation.eulerAngles;
+        _centerAngle = GvrViewer.Instance.HeadPose.Orientation;
     }
 
     public bool? GetReaction()
@@ -23,53 +21,55 @@ public class HeadGestures : MonoBehaviour
         _reaction = null;
         return value;
     }
-    // Update is called once per frame
-    void Update()
 
+    void Update()
     {
-     if (_timeStamp < 0.8f)
-        { 
-            _angles.Add(GvrViewer.Instance.HeadPose.Orientation.eulerAngles);
-        _timeStamp += Time.deltaTime;
-        }   
-    else
-     {
-         _reaction = null;
-            CheckMovement();
+        if (_timeStamp < 1f)
+        {
+            CheckAngles();
+            _timeStamp += Time.deltaTime;
         }
-	}
+        else
+        {
+            _reaction = null;
+            Reset();
+        }
+    }
+    private void CheckAngles()
+    {
+        Quaternion posDiff = Quaternion.Inverse(_centerAngle)*GvrViewer.Instance.HeadPose.Orientation;
+        if (posDiff.x > 0.15 && !_down)
+            _down = true;
+        else if (posDiff.x < -0.15 && !_up)
+            _up = true;
+        if (posDiff.y > 0.15 && !_right)
+            _right = true;
+        else if (posDiff.y < -0.15 && !_left)
+            _left = true;
+        CheckMovement();
+    }
 
     private void CheckMovement()
     {
-        bool right = false, left = false, up = false, down = false;
-        foreach (var angle in _angles)
-        {
-            if (angle.x < _centerAngle.x - 20 && !up)
-                up = true;
-            else if (angle.x > _centerAngle.x + 20 && !down)
-                down = true;
-            if (angle.y < _centerAngle.y -20 && !left)
-                left = true;
-            else if (angle.y > _centerAngle.y +20  && !right)
-                right = true;
-        }
-        if (left && right && !(up && down))
+        if (_left && _right && !(_up && _down))
         {
             _reaction = false;
-            Debug.Log("nay");
+            Reset();
         }
-        if (up && down && !(left && right))
+        else if (_up && _down && !(_left && _right))
         {
             _reaction = true;
-            Debug.Log("indeed");
-        }
-        Reset();
+            Reset();
+        }        
     }
 
     private void Reset()
     {
-        _angles.Clear();
-        _centerAngle = GvrViewer.Instance.HeadPose.Orientation.eulerAngles;
+        _down = false;
+        _up = false;
+        _left = false;
+        _right = false;
+        _centerAngle = GvrViewer.Instance.HeadPose.Orientation;
         _timeStamp = 0;
     }
 }
