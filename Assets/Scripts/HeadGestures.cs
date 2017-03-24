@@ -38,13 +38,13 @@ public class HeadGestures : MonoBehaviour
     private void CheckAngles()
     {
         Quaternion posDiff = Quaternion.Inverse(_centerAngle)*GvrViewer.Instance.HeadPose.Orientation;
-        if (posDiff.x > 0.15 && !_down)
+        if (posDiff.x > 0.1 && !_down)
             _down = true;
-        else if (posDiff.x < -0.15 && !_up)
+        else if (posDiff.x < -0.05 && !_up)
             _up = true;
-        if (posDiff.y > 0.15 && !_right)
+        if (posDiff.y > 0.05 && !_right)
             _right = true;
-        else if (posDiff.y < -0.15 && !_left)
+        else if (posDiff.y < -0.05 && !_left)
             _left = true;
         CheckMovement();
     }
