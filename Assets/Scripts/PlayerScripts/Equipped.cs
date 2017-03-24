@@ -1,33 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Equipped : MonoBehaviour
-{
-
-    public Armor Headgear;
-    public Armor Torso;
-    public Armor Legs;
-    public Armor Gloves;
-    public Armor Boots;
-    public Armor Cape;
-    
-    public Equipment LeftRing;
-    public Equipment RightRing;
-    public Equipment Neckless;
-    public Equipment LeftEar;
-    public Equipment RightEar;
-
-    public Weapon Mainhand;
-    public Item Offhand;
+{ 
+    public List<GameObject> Equipables;
+    public GameObject ToBeEquipeed;
+    public GameObject ToBeEquipeed2;
 
     void Start()
     {
-       
+        Equip(ToBeEquipeed);
+        Equip(ToBeEquipeed2);
     }
 
     void Update()
     {
-        transform.forward = Camera.main.transform.TransformDirection(Vector3.forward);
+    }
+
+    void Equip(GameObject prefab)
+    {
+        var equipSpot = Equipables.FirstOrDefault(x => prefab.tag == x.tag);
+        if (equipSpot != null)
+            Instantiate(prefab, equipSpot.transform);
     }
 }

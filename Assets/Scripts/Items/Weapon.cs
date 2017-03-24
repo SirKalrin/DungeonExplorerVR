@@ -6,7 +6,7 @@ public abstract class Weapon : Equipment
 {
     public WeaponType WeaponType;
     public ElementalType ElementalDamageType;
-
+    public GameObject WeaponPrefab;
     public float Range;
     public float AttackSpeed;
 
