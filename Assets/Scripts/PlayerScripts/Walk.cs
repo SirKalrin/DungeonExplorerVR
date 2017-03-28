@@ -27,11 +27,9 @@ public class Walk : MonoBehaviour
 	void Update ()
 	{
         Vector3 forward = _vrHead.TransformDirection(Vector3.forward);
-        
         if (Input.GetButton("Fire1"))
         {
             MoveSpeed = 5.0f;
-            transform.rotation = new Quaternion(transform.rotation.x, forward.y, transform.rotation.z, transform.rotation.w);
         }
         else
         {
