@@ -25,34 +25,32 @@ public class Walk : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 direction = Vector3.forward;
-        //Vector3 forward = _vrHead.TransformDirection(Vector3.forward);
+        Vector3 direction = _vrHead.TransformDirection(Vector3.forward);
 
-        if (Input.GetAxis("Vertical") > 0 && Input.GetAxis("Horizontal") == 0)
+        if (Input.GetAxis("Vertical") > 0 && Input.GetAxis("Horizontal").Equals(0))
         {
             direction = _vrHead.TransformDirection(Vector3.forward);
             MoveSpeed = 5.0f;
             Debug.Log("Forward");
         }
-        else if (Input.GetAxis("Vertical") < 0 && Input.GetAxis("Horizontal") == 0)
+        else if (Input.GetAxis("Vertical") < 0 && Input.GetAxis("Horizontal").Equals(0))
         {
             direction = _vrHead.TransformDirection(Vector3.back);
             MoveSpeed = 5.0f;
             Debug.Log("Back");
         }
-        else if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") > 0)
+        else if (Input.GetAxis("Vertical").Equals(0) && Input.GetAxis("Horizontal") > 0)
         {
             direction = _vrHead.TransformDirection(Vector3.right);
             MoveSpeed = 5.0f;
             Debug.Log("Right");
         }
-        else if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") < 0)
+        else if (Input.GetAxis("Vertical").Equals(0) && Input.GetAxis("Horizontal") < 0)
         {
             direction = _vrHead.TransformDirection(Vector3.left);
             MoveSpeed = 5.0f;
             Debug.Log("Left");
         }
-
 
         else if (Input.GetButton("Fire1"))
         {
@@ -63,6 +61,5 @@ public class Walk : MonoBehaviour
             MoveSpeed = 0.0f;
         }
         _charCtrl.SimpleMove(direction * MoveSpeed);
-
     }
 }
