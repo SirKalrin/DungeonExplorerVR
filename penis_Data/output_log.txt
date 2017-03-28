@@ -1,0 +1,168 @@
+Mono path[0] = 'C:/School/GameDev/DungeonExplorerVR/penis_Data/Managed'
+Mono path[1] = 'C:/School/GameDev/DungeonExplorerVR/penis_Data/Mono'
+Mono config path = 'C:/School/GameDev/DungeonExplorerVR/penis_Data/Mono/etc'
+PlayerConnection initialized from C:/School/GameDev/DungeonExplorerVR/penis_Data (debug = 0)
+PlayerConnection initialized network socket : 0.0.0.0 55450
+Multi-casting "[IP] 192.168.15.1 [Port] 55450 [Flags] 2 [Guid] 2705251384 [EditorId] 434966979 [Version] 1048832 [Id] WindowsPlayer(DESKTOP-64DA5F0) [Debug] 0" to [225.0.0.222:54997]...
+Started listening to [0.0.0.0:55450]
+PlayerConnection already initialized - listening to [0.0.0.0:55450]
+Player data archive not found at `C:/School/GameDev/DungeonExplorerVR/penis_Data/data.unity3d`, using local filesystemInitialize engine version: 5.6.0b10 (230d5f2aa01e)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 960M (ID=0x139b)
+    Vendor:   NVIDIA
+    VRAM:     1995 MB
+    Driver:   10.18.13.6839
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\School\GameDev\DungeonExplorerVR\penis_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\School\GameDev\DungeonExplorerVR\penis_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\School\GameDev\DungeonExplorerVR\penis_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\School\GameDev\DungeonExplorerVR\penis_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\School\GameDev\DungeonExplorerVR\penis_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\School\GameDev\DungeonExplorerVR\penis_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\School\GameDev\DungeonExplorerVR\penis_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\School\GameDev\DungeonExplorerVR\penis_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\School\GameDev\DungeonExplorerVR\penis_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\School\GameDev\DungeonExplorerVR\penis_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\School\GameDev\DungeonExplorerVR\penis_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading C:\School\GameDev\DungeonExplorerVR\penis_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+Platform assembly: C:\School\GameDev\DungeonExplorerVR\penis_Data\Managed\UnityEngine.VR.dll (this message is harmless)
+Loading C:\School\GameDev\DungeonExplorerVR\penis_Data\Managed\UnityEngine.VR.dll into Unity Child Domain
+Platform assembly: C:\School\GameDev\DungeonExplorerVR\penis_Data\Managed\Google.ProtocolBuffers.dll (this message is harmless)
+Loading C:\School\GameDev\DungeonExplorerVR\penis_Data\Managed\Google.ProtocolBuffers.dll into Unity Child Domain
+- Completed reload, in  0.042 seconds
+Platform assembly: C:\School\GameDev\DungeonExplorerVR\penis_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\School\GameDev\DungeonExplorerVR\penis_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+Compositor failed to initialize.Compositor failed to initialize.UnloadTime: 1.241679 ms
+Setting up 4 worker threads for Enlighten.
+  Thread -> id: 2420 -> priority: 1 
+  Thread -> id: 3444 -> priority: 1 
+  Thread -> id: bdc -> priority: 1 
+  Thread -> id: 6b4 -> priority: 1 
+InvalidOperationException: Unsupported device.
+  at Gvr.Internal.BaseVRDevice.GetDevice () [0x00022] in C:\School\GameDev\DungeonExplorerVR\Assets\GoogleVR\Legacy\Scripts\Internal\VRDevices\BaseVRDevice.cs:249 
+  at GvrViewer.InitDevice () [0x00017] in C:\School\GameDev\DungeonExplorerVR\Assets\GoogleVR\Scripts\GvrViewer.cs:365 
+  at GvrViewer.Awake () [0x00046] in C:\School\GameDev\DungeonExplorerVR\Assets\GoogleVR\Scripts\GvrViewer.cs:414 
+UnityEngine.Object:INTERNAL_CALL_Internal_InstantiateSingle(Object, Vector3&, Quaternion&)
+UnityEngine.Object:Internal_InstantiateSingle(Object, Vector3, Quaternion) (at C:\buildslave\unity\build\artifacts\generated\common\runtime\UnityEngineObjectBindings.gen.cs:53)
+UnityEngine.Object:Instantiate(Object, Vector3, Quaternion) (at C:\buildslave\unity\build\Runtime\Export\UnityEngineObject.cs:157)
+UnityEngine.Object:Instantiate(GameObject, Vector3, Quaternion) (at C:\buildslave\unity\build\Runtime\Export\UnityEngineObject.cs:207)
+UnityEngine.Networking.NetworkManager:OnServerAddPlayerInternal(NetworkConnection, Int16) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkManager.cs:1054)
+UnityEngine.Networking.NetworkManager:OnServerAddPlayer(NetworkConnection, Int16) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkManager.cs:1023)
+UnityEngine.Networking.NetworkManager:OnServerAddPlayerMessageInternal(NetworkMessage) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkManager.cs:873)
+UnityEngine.Networking.NetworkConnection:InvokeHandler(Int16, NetworkReader, Int32) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkConnection.cs:217)
+UnityEngine.Networking.NetworkServer:InvokeHandlerOnServer(ULocalConnectionToServer, Int16, MessageBase, Int32) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkServer.cs:1660)
+UnityEngine.Networking.ULocalConnectionToServer:Send(Int16, MessageBase) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\LocalConnections.cs:83)
+UnityEngine.Networking.ClientScene:AddPlayer(NetworkConnection, Int16, MessageBase) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\ClientScene.cs:200)
+UnityEngine.Networking.ClientScene:AddPlayer(NetworkConnection, Int16) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\ClientScene.cs:133)
+UnityEngine.Networking.ClientScene:AddPlayer(Int16) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\ClientScene.cs:126)
+UnityEngine.Networking.NetworkManager:OnClientConnect(NetworkConnection) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkManager.cs:1119)
+UnityEngine.Networking.NetworkManager:OnClientConnectInternal(NetworkMessage) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkManager.cs:923)
+UnityEngine.Networking.NetworkConnection:InvokeHandler(NetworkMessage) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkConnection.cs:228)
+UnityEngine.Networking.LocalClient:ProcessInternalMessages() (at C:\buildslave\unity\build\Extensions\Networking\Runtime\LocalClient.cs:142)
+UnityEngine.Networking.LocalClient:Update() (at C:\buildslave\unity\build\Extensions\Networking\Runtime\LocalClient.cs:69)
+UnityEngine.Networking.NetworkClient:UpdateClients() (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkClient.cs:948)
+UnityEngine.Networking.NetworkIdentity:UNetStaticUpdate() (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkIdentity.cs:1089)
+ 
+(Filename: C:/School/GameDev/DungeonExplorerVR/Assets/GoogleVR/Legacy/Scripts/Internal/VRDevices/BaseVRDevice.cs Line: 249)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at GvrViewer.OnDisable () [0x00007] in C:\School\GameDev\DungeonExplorerVR\Assets\GoogleVR\Scripts\GvrViewer.cs:567 
+UnityEngine.Object:INTERNAL_CALL_Internal_InstantiateSingle(Object, Vector3&, Quaternion&)
+UnityEngine.Object:Internal_InstantiateSingle(Object, Vector3, Quaternion) (at C:\buildslave\unity\build\artifacts\generated\common\runtime\UnityEngineObjectBindings.gen.cs:53)
+UnityEngine.Object:Instantiate(Object, Vector3, Quaternion) (at C:\buildslave\unity\build\Runtime\Export\UnityEngineObject.cs:157)
+UnityEngine.Object:Instantiate(GameObject, Vector3, Quaternion) (at C:\buildslave\unity\build\Runtime\Export\UnityEngineObject.cs:207)
+UnityEngine.Networking.NetworkManager:OnServerAddPlayerInternal(NetworkConnection, Int16) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkManager.cs:1054)
+UnityEngine.Networking.NetworkManager:OnServerAddPlayer(NetworkConnection, Int16) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkManager.cs:1023)
+UnityEngine.Networking.NetworkManager:OnServerAddPlayerMessageInternal(NetworkMessage) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkManager.cs:873)
+UnityEngine.Networking.NetworkConnection:InvokeHandler(Int16, NetworkReader, Int32) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkConnection.cs:217)
+UnityEngine.Networking.NetworkServer:InvokeHandlerOnServer(ULocalConnectionToServer, Int16, MessageBase, Int32) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkServer.cs:1660)
+UnityEngine.Networking.ULocalConnectionToServer:Send(Int16, MessageBase) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\LocalConnections.cs:83)
+UnityEngine.Networking.ClientScene:AddPlayer(NetworkConnection, Int16, MessageBase) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\ClientScene.cs:200)
+UnityEngine.Networking.ClientScene:AddPlayer(NetworkConnection, Int16) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\ClientScene.cs:133)
+UnityEngine.Networking.ClientScene:AddPlayer(Int16) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\ClientScene.cs:126)
+UnityEngine.Networking.NetworkManager:OnClientConnect(NetworkConnection) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkManager.cs:1119)
+UnityEngine.Networking.NetworkManager:OnClientConnectInternal(NetworkMessage) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkManager.cs:923)
+UnityEngine.Networking.NetworkConnection:InvokeHandler(NetworkMessage) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkConnection.cs:228)
+UnityEngine.Networking.LocalClient:ProcessInternalMessages() (at C:\buildslave\unity\build\Extensions\Networking\Runtime\LocalClient.cs:142)
+UnityEngine.Networking.LocalClient:Update() (at C:\buildslave\unity\build\Extensions\Networking\Runtime\LocalClient.cs:69)
+UnityEngine.Networking.NetworkClient:UpdateClients() (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkClient.cs:948)
+UnityEngine.Networking.NetworkIdentity:UNetStaticUpdate() (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkIdentity.cs:1089)
+ 
+(Filename: C:/School/GameDev/DungeonExplorerVR/Assets/GoogleVR/Scripts/GvrViewer.cs Line: 567)
+
+walk
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+Walk:Start() (at C:\School\GameDev\DungeonExplorerVR\Assets\Scripts\PlayerScripts\Walk.cs:17)
+ 
+(Filename: C:/School/GameDev/DungeonExplorerVR/Assets/Scripts/PlayerScripts/Walk.cs Line: 17)
+
+InvalidOperationException: Unsupported device.
+  at Gvr.Internal.BaseVRDevice.GetDevice () [0x00022] in C:\School\GameDev\DungeonExplorerVR\Assets\GoogleVR\Legacy\Scripts\Internal\VRDevices\BaseVRDevice.cs:249 
+  at GvrViewer.InitDevice () [0x00017] in C:\School\GameDev\DungeonExplorerVR\Assets\GoogleVR\Scripts\GvrViewer.cs:365 
+  at GvrViewer.Awake () [0x00046] in C:\School\GameDev\DungeonExplorerVR\Assets\GoogleVR\Scripts\GvrViewer.cs:414 
+UnityEngine.Object:INTERNAL_CALL_Internal_InstantiateSingle(Object, Vector3&, Quaternion&)
+UnityEngine.Object:Internal_InstantiateSingle(Object, Vector3, Quaternion) (at C:\buildslave\unity\build\artifacts\generated\common\runtime\UnityEngineObjectBindings.gen.cs:53)
+UnityEngine.Object:Instantiate(Object, Vector3, Quaternion) (at C:\buildslave\unity\build\Runtime\Export\UnityEngineObject.cs:157)
+UnityEngine.Object:Instantiate(GameObject, Vector3, Quaternion) (at C:\buildslave\unity\build\Runtime\Export\UnityEngineObject.cs:207)
+UnityEngine.Networking.NetworkManager:OnServerAddPlayerInternal(NetworkConnection, Int16) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkManager.cs:1054)
+UnityEngine.Networking.NetworkManager:OnServerAddPlayer(NetworkConnection, Int16) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkManager.cs:1023)
+UnityEngine.Networking.NetworkManager:OnServerAddPlayerMessageInternal(NetworkMessage) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkManager.cs:873)
+UnityEngine.Networking.NetworkConnection:InvokeHandler(Int16, NetworkReader, Int32) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkConnection.cs:217)
+UnityEngine.Networking.NetworkServer:InvokeHandlerOnServer(ULocalConnectionToServer, Int16, MessageBase, Int32) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkServer.cs:1660)
+UnityEngine.Networking.ULocalConnectionToServer:Send(Int16, MessageBase) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\LocalConnections.cs:83)
+UnityEngine.Networking.ClientScene:AddPlayer(NetworkConnection, Int16, MessageBase) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\ClientScene.cs:200)
+UnityEngine.Networking.ClientScene:AddPlayer(NetworkConnection, Int16) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\ClientScene.cs:133)
+UnityEngine.Networking.ClientScene:AddPlayer(Int16) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\ClientScene.cs:126)
+UnityEngine.Networking.NetworkManager:OnClientConnect(NetworkConnection) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkManager.cs:1119)
+UnityEngine.Networking.NetworkManager:OnClientConnectInternal(NetworkMessage) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkManager.cs:923)
+UnityEngine.Networking.NetworkConnection:InvokeHandler(NetworkMessage) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkConnection.cs:228)
+UnityEngine.Networking.LocalClient:ProcessInternalMessages() (at C:\buildslave\unity\build\Extensions\Networking\Runtime\LocalClient.cs:142)
+UnityEngine.Networking.LocalClient:Update() (at C:\buildslave\unity\build\Extensions\Networking\Runtime\LocalClient.cs:69)
+UnityEngine.Networking.NetworkClient:UpdateClients() (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkClient.cs:948)
+UnityEngine.Networking.NetworkIdentity:UNetStaticUpdate() (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkIdentity.cs:1089)
+ 
+(Filename: C:/School/GameDev/DungeonExplorerVR/Assets/GoogleVR/Legacy/Scripts/Internal/VRDevices/BaseVRDevice.cs Line: 249)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at GvrViewer.OnDisable () [0x00007] in C:\School\GameDev\DungeonExplorerVR\Assets\GoogleVR\Scripts\GvrViewer.cs:567 
+UnityEngine.Object:INTERNAL_CALL_Internal_InstantiateSingle(Object, Vector3&, Quaternion&)
+UnityEngine.Object:Internal_InstantiateSingle(Object, Vector3, Quaternion) (at C:\buildslave\unity\build\artifacts\generated\common\runtime\UnityEngineObjectBindings.gen.cs:53)
+UnityEngine.Object:Instantiate(Object, Vector3, Quaternion) (at C:\buildslave\unity\build\Runtime\Export\UnityEngineObject.cs:157)
+UnityEngine.Object:Instantiate(GameObject, Vector3, Quaternion) (at C:\buildslave\unity\build\Runtime\Export\UnityEngineObject.cs:207)
+UnityEngine.Networking.NetworkManager:OnServerAddPlayerInternal(NetworkConnection, Int16) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkManager.cs:1054)
+UnityEngine.Networking.NetworkManager:OnServerAddPlayer(NetworkConnection, Int16) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkManager.cs:1023)
+UnityEngine.Networking.NetworkManager:OnServerAddPlayerMessageInternal(NetworkMessage) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkManager.cs:873)
+UnityEngine.Networking.NetworkConnection:InvokeHandler(Int16, NetworkReader, Int32) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkConnection.cs:217)
+UnityEngine.Networking.NetworkServer:InvokeHandlerOnServer(ULocalConnectionToServer, Int16, MessageBase, Int32) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkServer.cs:1660)
+UnityEngine.Networking.ULocalConnectionToServer:Send(Int16, MessageBase) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\LocalConnections.cs:83)
+UnityEngine.Networking.ClientScene:AddPlayer(NetworkConnection, Int16, MessageBase) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\ClientScene.cs:200)
+UnityEngine.Networking.ClientScene:AddPlayer(NetworkConnection, Int16) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\ClientScene.cs:133)
+UnityEngine.Networking.ClientScene:AddPlayer(Int16) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\ClientScene.cs:126)
+UnityEngine.Networking.NetworkManager:OnClientConnect(NetworkConnection) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkManager.cs:1119)
+UnityEngine.Networking.NetworkManager:OnClientConnectInternal(NetworkMessage) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkManager.cs:923)
+UnityEngine.Networking.NetworkConnection:InvokeHandler(NetworkMessage) (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkConnection.cs:228)
+UnityEngine.Networking.LocalClient:ProcessInternalMessages() (at C:\buildslave\unity\build\Extensions\Networking\Runtime\LocalClient.cs:142)
+UnityEngine.Networking.LocalClient:Update() (at C:\buildslave\unity\build\Extensions\Networking\Runtime\LocalClient.cs:69)
+UnityEngine.Networking.NetworkClient:UpdateClients() (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkClient.cs:948)
+UnityEngine.Networking.NetworkIdentity:UNetStaticUpdate() (at C:\buildslave\unity\build\Extensions\Networking\Runtime\NetworkIdentity.cs:1089)
+ 
+(Filename: C:/School/GameDev/DungeonExplorerVR/Assets/GoogleVR/Scripts/GvrViewer.cs Line: 567)
+
+walk
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+Walk:Start() (at C:\School\GameDev\DungeonExplorerVR\Assets\Scripts\PlayerScripts\Walk.cs:17)
+ 
+(Filename: C:/School/GameDev/DungeonExplorerVR/Assets/Scripts/PlayerScripts/Walk.cs Line: 17)
+
