@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
-
+    private Backpack _backpack;
 
 	// Use this for initialization
 	void Start ()
 	{
-
+	    _backpack = GetComponentInChildren<Backpack>();
 	}
 	
 	// Update is called once per frame
@@ -18,7 +18,16 @@ public class PlayerBehaviour : MonoBehaviour
         {
             Attack();
         }
-    }
+	    int horizontalOption = Mathf.FloorToInt(Input.GetAxis("Horizontal2"));
+	    switch (horizontalOption)
+	    {
+            case 1:
+	        {
+                
+	            break;
+	        }
+	    }
+	}
 
     private void Attack()
     {
