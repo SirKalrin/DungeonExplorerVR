@@ -9,6 +9,7 @@ public class Walk : MonoBehaviour
     private CharacterController _charCtrl;
     private GvrViewer _gvrViewer;
     private Transform _vrHead;
+    private Rigidbody _rb;
 
 
     // Use this for initialization
