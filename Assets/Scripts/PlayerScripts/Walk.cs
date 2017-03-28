@@ -13,28 +13,56 @@ public class Walk : MonoBehaviour
 
 
     // Use this for initialization
-	void Start ()
-	{
+    void Start()
+    {
         Debug.Log("walk");
-	    _charCtrl = GetComponent<CharacterController>();
+        _charCtrl = GetComponent<CharacterController>();
 
-	    //_gvrViewer = transform.GetChild(0).GetComponent<GvrViewer>();
-	    _vrHead = Camera.main.transform;
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-        Vector3 forward = _vrHead.TransformDirection(Vector3.forward);
-        if (Input.GetButton("Fire1"))
+        //_gvrViewer = transform.GetChild(0).GetComponent<GvrViewer>();
+        _vrHead = Camera.main.transform;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        Vector3 direction = Vector3.forward;
+        //Vector3 forward = _vrHead.TransformDirection(Vector3.forward);
+
+        if (Input.GetAxis("Vertical") > 0 && Input.GetAxis("Horizontal") == 0)
         {
+            direction = _vrHead.TransformDirection(Vector3.forward);
             MoveSpeed = 5.0f;
+            Debug.Log("Forward");
+        }
+        else if (Input.GetAxis("Vertical") < 0 && Input.GetAxis("Horizontal") == 0)
+        {
+            direction = _vrHead.TransformDirection(Vector3.back);
+            MoveSpeed = 5.0f;
+            Debug.Log("Back");
+        }
+        else if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") > 0)
+        {
+            direction = _vrHead.TransformDirection(Vector3.right);
+            MoveSpeed = 5.0f;
+            Debug.Log("Right");
+        }
+        else if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") < 0)
+        {
+            direction = _vrHead.TransformDirection(Vector3.left);
+            MoveSpeed = 5.0f;
+            Debug.Log("Left");
+        }
+
+
+        else if (Input.GetButton("Fire1"))
+        {
+            MoveSpeed = 5.0f;           
         }
         else
         {
             MoveSpeed = 0.0f;
         }
-        _charCtrl.SimpleMove(forward * MoveSpeed);
-        
-	}
+        _charCtrl.SimpleMove(direction * MoveSpeed);
+
+    }
 }

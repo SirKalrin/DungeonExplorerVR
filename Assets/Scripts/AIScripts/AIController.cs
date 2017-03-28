@@ -60,6 +60,8 @@ public class AIController : MonoBehaviour
             movementController.MoveForward(transform.position);
             movementController.RotateTowardsTarget(distance, target.transform);
             animationController.DoAttackAnimation();
+            GameObject combatController = GameObject.FindGameObjectWithTag("CombatController");
+            combatController.GetComponent<CombatManager>().AttackTarget(this.gameObject, target);
         }
     }
 
