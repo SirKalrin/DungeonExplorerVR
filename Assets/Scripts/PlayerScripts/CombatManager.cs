@@ -19,14 +19,12 @@ public class CombatManager : MonoBehaviour
 
     public void AttackTarget(GameObject attacker, GameObject target)
     {
-        if (attacker.tag != "Player")
+        if (attacker.tag == "EnemyAI" && target.tag == "Player")
         {
             AIStats attackerStats = attacker.GetComponent<AIStats>();
-            PlayerStats targetStats = target.GetComponent<PlayerStats>();
+            StatController targetStatController = target.GetComponent<StatController>();
 
-            targetStats.Health -= attackerStats.Damage * (attackerStats.Level / targetStats.Level);
-
-            Debug.Log("Player health: " + targetStats.Health);
+            targetStatController.TakeDamage(attackerStats.Damage * (attackerStats.Level / targetStatController.Level));
         }
     }
 }

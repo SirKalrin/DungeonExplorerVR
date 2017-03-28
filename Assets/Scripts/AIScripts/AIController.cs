@@ -8,27 +8,34 @@ public class AIController : MonoBehaviour
     public GameObject target; //the enemy's target
     private AIMovements movementController;
     private AIAnimations animationController;
+    private AIStats AIStats;
+    private GameObject CombatController;
+
     private Transform myTransform;
     private Vector3 startPosition;
 
     public float DetectionDistance = 7;
     public float AttackDistance = 2;
-    public float AttackRate = 2;
+    public float AttackRate;
+
+    private float TimeToStrike;
 
     void Start()
     {
         movementController = transform.GetComponent<AIMovements>();
         animationController = transform.GetComponent<AIAnimations>();
         myTransform = this.transform;
+        AIStats = transform.GetComponent<AIStats>();
+        CombatController = GameObject.FindGameObjectWithTag("CombatController"); ;
 
         startPosition = new Vector3(this.transform.position.x, 0.5200002f, transform.position.z);
+
+        AttackRate = 3;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-
-
         // If there is a target in radius
         if (target != null)
         {
@@ -54,14 +61,19 @@ public class AIController : MonoBehaviour
             movementController.MoveForward(target.transform.position);
             animationController.StopAttackAnimation();
             animationController.StartWalkAnimation();
+            TimeToStrike = Time.time + 0.5f;
         }
         else
         {
             movementController.MoveForward(transform.position);
             movementController.RotateTowardsTarget(distance, target.transform);
             animationController.DoAttackAnimation();
-            GameObject combatController = GameObject.FindGameObjectWithTag("CombatController");
-            combatController.GetComponent<CombatManager>().AttackTarget(this.gameObject, target);
+            //Attack
+            if(Time.time > TimeToStrike)
+            {
+                CombatController.GetComponent<CombatManager>().AttackTarget(this.gameObject, target);
+                TimeToStrike = Time.time + AttackRate;
+            }
         }
     }
 
@@ -105,7 +117,7 @@ public class AIController : MonoBehaviour
             target = null;
             animationController.StopWalkAnimation();
             var enemies = GameObject.FindGameObjectsWithTag("EnemyAI");
-            foreach(var enemy in enemies)
+            foreach (var enemy in enemies)
             {
                 enemy.GetComponent<AIController>().target = null;
             }

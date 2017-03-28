@@ -4,24 +4,16 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour {
 
-    public int Level = 1;
-    public int Health = 100;
-    public int Energy = 100;
+    public int Level;
+    public int MaxHealth;
+    public int Health;
+    public int MaxEnergy;
+    public int Energy;
 
-    public int Strength = 10;
-    public int Intellect = 10;
-    public int Dexterity = 10;
-    public int Vitality = 10;
+    public int Strength;
+    public int Intellect;
+    public int Dexterity;
+    public int Vitality;
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    public float LevelMultiplier = 0.1f;
 }
