@@ -17,7 +17,6 @@ public class Walk : MonoBehaviour
 	{
         Debug.Log("walk");
 	    _charCtrl = GetComponent<CharacterController>();
-	    _rb = GetComponent<Rigidbody>();
 
 	    //_gvrViewer = transform.GetChild(0).GetComponent<GvrViewer>();
 	    _vrHead = Camera.main.transform;

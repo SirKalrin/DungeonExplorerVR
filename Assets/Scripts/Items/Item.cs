@@ -6,6 +6,7 @@ public abstract class Item : MonoBehaviour
 {
     public string Name;
 
+    public int Quantity;
     public int LevelRequired;
     public int IntRequired;
     public int StrRequired;
