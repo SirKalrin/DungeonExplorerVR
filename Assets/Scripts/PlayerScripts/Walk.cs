@@ -9,6 +9,7 @@ public class Walk : MonoBehaviour
     private CharacterController _charCtrl;
     private GvrViewer _gvrViewer;
     private Transform _vrHead;
+    private Rigidbody _rb;
 
 
     // Use this for initialization
@@ -16,6 +17,7 @@ public class Walk : MonoBehaviour
 	{
         Debug.Log("walk");
 	    _charCtrl = GetComponent<CharacterController>();
+	    _rb = GetComponent<Rigidbody>();
 
 	    //_gvrViewer = transform.GetChild(0).GetComponent<GvrViewer>();
 	    _vrHead = Camera.main.transform;
@@ -25,9 +27,11 @@ public class Walk : MonoBehaviour
 	void Update ()
 	{
         Vector3 forward = _vrHead.TransformDirection(Vector3.forward);
+        
         if (Input.GetButton("Fire1"))
         {
             MoveSpeed = 5.0f;
+            transform.rotation = new Quaternion(transform.rotation.x, forward.y, transform.rotation.z, transform.rotation.w);
         }
         else
         {
