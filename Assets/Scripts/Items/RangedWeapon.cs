@@ -8,6 +8,7 @@ public class RangedWeapon : Weapon
 {
     private Quiver _quiver;
 
+    private AudioSource audio;
     public Transform ProjectileSpawn;
 
     public float DamageMultiplier;
@@ -15,7 +16,9 @@ public class RangedWeapon : Weapon
 	// Use this for initialization
 	void Start ()
 	{
-	    _quiver = transform.parent.GetComponentInParent<Equipped>().Equipables.FirstOrDefault(x => x.tag == "Offhand").GetComponentInChildren<Quiver>();
+	    audio = GetComponent<AudioSource>();
+
+        _quiver = transform.parent.GetComponentInParent<Equipped>().Equipables.FirstOrDefault(x => x.tag == "Offhand").GetComponentInChildren<Quiver>();
 	}
 	
 	// Update is called once per frame
@@ -34,7 +37,8 @@ public class RangedWeapon : Weapon
                     ProjectileSpawn.rotation);
                 projectile.transform.forward = Camera.main.transform.forward;
                 projectile.GetComponent<Rigidbody>().velocity = projectile.transform.forward*Range/10;
-                Debug.Log("Attacked");
+                if (!audio.isPlaying)
+                    audio.Play();
                 Destroy(projectile, 10f);
             }
         }
