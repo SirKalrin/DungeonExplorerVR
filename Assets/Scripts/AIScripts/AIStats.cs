@@ -16,12 +16,8 @@ public class AIStats : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-<<<<<<< HEAD
         Health = 100*Level;
-=======
 	    MaxHealth = 100*Level;
-        Health = 30;
->>>>>>> origin/master
 	    Damage = 20*Level;
 	}
 	
