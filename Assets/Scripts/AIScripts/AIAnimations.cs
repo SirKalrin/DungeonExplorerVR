@@ -40,4 +40,11 @@ public class AIAnimations : MonoBehaviour
     {
         animator.SetBool("IsAttacking", false);
     }
+
+    public void DoDeathAnimation()
+    {
+        animator.SetBool("IsWalking", false);
+        animator.SetBool("IsAttacking", false);
+        animator.SetBool("IsDying", true);
+    }
 }

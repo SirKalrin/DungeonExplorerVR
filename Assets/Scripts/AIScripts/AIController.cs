@@ -36,21 +36,29 @@ public class AIController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        // If there is a target in radius
-        if (target != null)
+        if (AIStats.Health <= 0)
         {
-            var distance = Vector3.Distance(myTransform.position, target.transform.position);
-            EngageTarget(distance);
-        }
-        else if (Vector3.Distance(transform.position, startPosition) > 1)
-        {
-            movementController.MoveForward(startPosition);
-            animationController.StopAttackAnimation();
-            animationController.StartWalkAnimation();
+            animationController.DoDeathAnimation();
         }
         else
         {
-            animationController.StopWalkAnimation();
+            // If there is a target in radius
+            if (target != null)
+            {
+                var distance = Vector3.Distance(myTransform.position, target.transform.position);
+                EngageTarget(distance);
+            }
+            else if (Vector3.Distance(transform.position, startPosition) > 1)
+            {
+                AIStats.IsReturningBack = true;
+                movementController.MoveForward(startPosition);
+                animationController.StopAttackAnimation();
+                animationController.StartWalkAnimation();
+            }
+            else
+            {
+                animationController.StopWalkAnimation();
+            }
         }
     }
 
@@ -69,7 +77,7 @@ public class AIController : MonoBehaviour
             movementController.RotateTowardsTarget(distance, target.transform);
             animationController.DoAttackAnimation();
             //Attack
-            if(Time.time > TimeToStrike)
+            if (Time.time > TimeToStrike)
             {
                 CombatController.GetComponent<CombatManager>().AttackTarget(this.gameObject, target);
                 TimeToStrike = Time.time + AttackRate;
