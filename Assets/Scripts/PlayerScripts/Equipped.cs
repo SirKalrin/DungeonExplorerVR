@@ -25,4 +25,9 @@ public class Equipped : MonoBehaviour
         if (equipSpot != null)
             Instantiate(prefab, equipSpot.transform);
     }
+
+    public void FillQuiver(int arrows)
+    {
+        GetComponentInChildren<Quiver>().Projectiles += arrows;
+    }
 }
