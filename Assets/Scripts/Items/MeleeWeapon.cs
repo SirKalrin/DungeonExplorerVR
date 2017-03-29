@@ -5,10 +5,10 @@ using UnityEngine;
 public class MeleeWeapon : Weapon {
 
     public DamageType PhysicalDamageType;
-    public double MinPhysicalDamage;
-    public double MaxPhysicalDamage;
-    public double MinElementalDamage;
-    public double MaxElementalDamage;
+    public float MinPhysicalDamage;
+    public float MaxPhysicalDamage;
+    public float MinElementalDamage;
+    public float MaxElementalDamage;
 
     // Use this for initialization
     void Start () {

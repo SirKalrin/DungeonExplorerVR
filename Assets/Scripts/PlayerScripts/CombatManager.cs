@@ -29,4 +29,15 @@ public class CombatManager : MonoBehaviour
             Debug.Log("Player health: " + targetStats.Health);
         }
     }
+
+    public void ProjectileHit(GameObject target, Arrow projectile, bool headshot)
+    {
+        float damage = Random.Range(projectile.MinPhysicalDamage, projectile.MaxPhysicalDamage);
+        if (headshot)
+            damage *= 10;
+        target.GetComponentInParent<AIStats>().Health -= (int)damage;
+        if(target.GetComponentInParent<AIStats>().Health <=0)
+            Destroy(target.transform.parent);
+        Debug.Log(target.GetComponentInParent<AIStats>().Health);
+    }
 }

@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class AIStats : MonoBehaviour
 {
-
+    [SerializeField]
+    private Collider _hitbox;
     public int Level = 1;
     public int Health;
-
+    private CombatManager _combatMgr;
     public int Damage;
 
 	// Use this for initialization
 	void Start ()
 	{
-	    Health = 100*Level;
+        Health = 100*Level;
 	    Damage = 20*Level;
 	}
 	
@@ -21,4 +22,5 @@ public class AIStats : MonoBehaviour
 	void Update () {
 		
 	}
+
 }
