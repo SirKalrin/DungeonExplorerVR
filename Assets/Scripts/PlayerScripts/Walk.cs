@@ -50,10 +50,6 @@ public class Walk : MonoBehaviour
             MoveSpeed = 5.0f;
             Debug.Log("Left");
         }
-        else if (Input.GetButton("Fire1"))
-        {
-            MoveSpeed = 5.0f;
-        }
 
         else
         {

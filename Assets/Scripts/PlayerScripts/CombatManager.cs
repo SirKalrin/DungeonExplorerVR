@@ -34,8 +34,6 @@ public class CombatManager : MonoBehaviour
         if (headshot)
             damage *= 10;
         target.GetComponentInParent<AIStats>().Health -= (int)damage;
-        if(target.GetComponentInParent<AIStats>().Health <=0)
-            Destroy(target.transform.parent);
         Debug.Log(target.GetComponentInParent<AIStats>().Health);
     }
 }
