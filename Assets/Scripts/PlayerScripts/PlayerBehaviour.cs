@@ -5,29 +5,27 @@ using UnityEngine;
 public class PlayerBehaviour : MonoBehaviour
 {
     private Backpack _backpack;
+    private Walk _movement;
     private float _atkCooldown;
 	// Use this for initialization
 	void Start ()
 	{
 	    _atkCooldown = 0;
-	    _backpack = GetComponentInChildren<Backpack>();
+	    _backpack = transform.FindChild("Main Camera").FindChild("Canvas").GetComponentInChildren<Backpack>();
+	    _movement = GetComponent<Walk>();
+        _backpack.ToggleBackpack();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        if (Input.GetKeyUp(KeyCode.I))
+            _backpack.ToggleBackpack();
+        else
+            _movement.MoveByInput();
         if (Input.GetButtonDown("Fire1"))
         {
             Attack();
         }
-	    int horizontalOption = Mathf.FloorToInt(Input.GetAxis("Horizontal2"));
-	    switch (horizontalOption)
-	    {
-            case 1:
-	        {
-                
-	            break;
-	        }
-	    }
 	}
 
     private void Attack()

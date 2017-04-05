@@ -19,22 +19,4 @@ public abstract class Item : MonoBehaviour
 
     public List<Attribute> Attributes;
 
-    public void ToggleGlow()
-    {
-        Shader something;
-        _isGlowing = !_isGlowing;
-        if (_isGlowing)
-        {
-             something = GetComponent<Renderer>().material.shader = Shader.Find("Self-Illumin/Outlined Diffuse");
-        }
-        else
-        {
-            something = GetComponent<Renderer>().material.shader = Shader.Find("Diffuse");
-        }
-        Debug.Log(something);
-
-                
-            
-        
-    }
 }

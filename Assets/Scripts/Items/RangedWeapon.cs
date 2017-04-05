@@ -17,8 +17,9 @@ public class RangedWeapon : Weapon
 	void Start ()
 	{
 	    audio = GetComponent<AudioSource>();
-        ToggleGlow();
-        _quiver = transform.parent.GetComponentInParent<Equipped>().Equipables.FirstOrDefault(x => x.tag == "Offhand").GetComponentInChildren<Quiver>();
+	    var firstOrDefault = transform.parent.GetComponentInParent<Equipped>().Equipables.FirstOrDefault(x => x.tag == "Offhand");
+	    if (firstOrDefault != null)
+	        _quiver = firstOrDefault.GetComponentInChildren<Quiver>();
 	}
 	
 	// Update is called once per frame
