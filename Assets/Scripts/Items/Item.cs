@@ -13,17 +13,28 @@ public abstract class Item : MonoBehaviour
     public int DexRequired;
     public int VitRequired;
 
+    private bool _isGlowing;
+
     public ClassType ClassRequired;
 
     public List<Attribute> Attributes;
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public void ToggleGlow()
+    {
+        Shader something;
+        _isGlowing = !_isGlowing;
+        if (_isGlowing)
+        {
+             something = GetComponent<Renderer>().material.shader = Shader.Find("Self-Illumin/Outlined Diffuse");
+        }
+        else
+        {
+            something = GetComponent<Renderer>().material.shader = Shader.Find("Diffuse");
+        }
+        Debug.Log(something);
+
+                
+            
+        
+    }
 }
