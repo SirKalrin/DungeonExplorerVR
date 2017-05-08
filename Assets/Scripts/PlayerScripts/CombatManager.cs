@@ -19,7 +19,7 @@ public class CombatManager : MonoBehaviour
 
     public void AttackTarget(GameObject attacker, GameObject target)
     {
-        if (attacker.tag == "EnemyAI" && target.tag == "Player")
+        if (attacker.tag == "EnemyAI" && target.tag == "Player" || attacker.tag == "Player" && target.tag == "EnemyAI")
         {
             AIStats attackerStats = attacker.GetComponent<AIStats>();
             StatController targetStatController = target.GetComponent<StatController>();

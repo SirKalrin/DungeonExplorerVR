@@ -9,11 +9,13 @@ public class MeleeWeapon : Weapon {
     public float MaxPhysicalDamage;
     public float MinElementalDamage;
     public float MaxElementalDamage;
+    public Animator anim;
 
     // Use this for initialization
-    void Start () {
-		
-	}
+    void Start ()
+    {
+        anim = GetComponent<Animator>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -22,6 +24,6 @@ public class MeleeWeapon : Weapon {
 
     public override void Attack()
     {
-        
+        anim.SetInteger("Slash", 1);
     }
 }

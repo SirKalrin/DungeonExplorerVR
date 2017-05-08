@@ -30,7 +30,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Attack()
     {
-        RangedWeapon weapon = this.gameObject.GetComponentInChildren<RangedWeapon>();
+        Weapon weapon = this.gameObject.GetComponentInChildren<Weapon>();
         if (Time.time > _atkCooldown)
         {
             weapon.Attack();
