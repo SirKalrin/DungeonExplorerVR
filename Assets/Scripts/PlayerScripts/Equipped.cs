@@ -19,11 +19,20 @@ public class Equipped : MonoBehaviour
     {
     }
 
-    void Equip(GameObject prefab)
+    public GameObject Equip(GameObject prefab)
     {
         var equipSpot = Equipables.FirstOrDefault(x => prefab.tag == x.tag);
+        GameObject switchedItem = null;
         if (equipSpot != null)
+        {
+            if (equipSpot.GetComponentInChildren<Item>() != null)
+            {
+                switchedItem = equipSpot.GetComponentInChildren<Item>().gameObject;
+                GameObject.Destroy(switchedItem);
+            }
             Instantiate(prefab, equipSpot.transform);
+        }
+        return switchedItem;
     }
 
     public void FillQuiver(int arrows)

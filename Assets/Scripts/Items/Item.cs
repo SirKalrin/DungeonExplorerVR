@@ -13,17 +13,10 @@ public abstract class Item : MonoBehaviour
     public int DexRequired;
     public int VitRequired;
 
+    private bool _isGlowing;
+
     public ClassType ClassRequired;
 
     public List<Attribute> Attributes;
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

@@ -17,7 +17,6 @@ public class RangedWeapon : Weapon
 	void Start ()
 	{
 	    audio = GetComponent<AudioSource>();
-
         _quiver = transform.parent.GetComponentInParent<Equipped>().Equipables.FirstOrDefault(x => x.tag == "Offhand").GetComponentInChildren<Quiver>();
 	}
 	

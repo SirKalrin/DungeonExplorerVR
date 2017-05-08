@@ -19,10 +19,10 @@ public class Walk : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveByInput();
+        //MoveByInput();
     }
 
-    private void MoveByInput()
+    public void MoveByInput()
     {
         Vector3 direction = _vrHead.TransformDirection(Vector3.forward);
 
