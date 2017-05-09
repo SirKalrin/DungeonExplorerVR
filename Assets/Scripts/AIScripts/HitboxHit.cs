@@ -10,6 +10,5 @@ public class HitboxHit : MonoBehaviour
         Debug.Log("HIT!");
             if (collider.gameObject.tag == "Projectile")
                 GameObject.FindGameObjectWithTag("CombatController").GetComponent<CombatManager>().ProjectileHit(gameObject, collider.gameObject.GetComponent<Arrow>(), isHead);
-
     }
 }

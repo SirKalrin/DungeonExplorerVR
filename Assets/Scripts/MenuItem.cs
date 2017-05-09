@@ -17,7 +17,7 @@ public class MenuItem : PointerInteraction
     }
     public void BClicked()
     {
-        SceneManager.LoadScene("BilleTestScene");
+        SceneManager.LoadScene("BTS2");
     }
     public void MClicked()
     {

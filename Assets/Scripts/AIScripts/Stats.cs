@@ -35,8 +35,8 @@ public class Stats : MonoBehaviour
         Debug.Log("method: die, gameobject.tag: " + gameObject.tag);
         if (gameObject.tag == "Player")
         {
-            //Initiate.Fade("Death", Color.black, 1);
-            SceneManager.LoadScene("Death");
+            Initiate.Fade("Death", Color.black, 1);
+            //SceneManager.LoadScene("Death");
         }
         else if (gameObject.tag == "EnemyAI")
         {
