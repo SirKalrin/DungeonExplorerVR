@@ -21,10 +21,7 @@ public class CombatManager : MonoBehaviour
     {
         if (attacker.tag == "EnemyAI" && target.tag == "Player" || attacker.tag == "Player" && target.tag == "EnemyAI")
         {
-            AIStats attackerStats = attacker.GetComponent<AIStats>();
-            StatController targetStatController = target.GetComponent<StatController>();
-
-            targetStatController.TakeDamage(attackerStats.Damage * (attackerStats.Level / targetStatController.Level));
+            target.GetComponent<Stats>().TakeDamage(attacker.GetComponent<Stats>().Damage);
         }
     }
 
@@ -33,7 +30,7 @@ public class CombatManager : MonoBehaviour
         float damage = Random.Range(projectile.MinPhysicalDamage, projectile.MaxPhysicalDamage);
         if (headshot)
             damage *= 10;
-        target.GetComponentInParent<AIStats>().Health -= (int)damage;
-        Debug.Log(target.GetComponentInParent<AIStats>().Health);
+        target.GetComponentInParent<Stats>().TakeDamage((int)damage);
+        Debug.Log("Health: " + target.GetComponentInParent<Stats>().Health);
     }
 }

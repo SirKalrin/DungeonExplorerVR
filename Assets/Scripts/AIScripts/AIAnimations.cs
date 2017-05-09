@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Messaging;
 using UnityEngine;
 
 public class AIAnimations : MonoBehaviour
 {
-
+    private float animationSpeedMultiplier;
     private Animator animator;
 	// Use this for initialization
 	void Start () {
@@ -26,19 +27,26 @@ public class AIAnimations : MonoBehaviour
         animator.SetBool("IsWalking", false);
     }
 
-    public void DoAttackAnimation()
+    public bool IsReadyToAttack()
     {
+        return !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack");
+    }
+    public void DoAttackAnimation(float animationSpeed)
+    {
+        
         animator.SetBool("IsAttacking", true);
-        if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        animator.SetFloat("Speed", (1.3f/animationSpeed));
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
-            animator.SetBool("IsAttacking", false);
             animator.SetBool("IsWalking", false);
+            animator.SetBool("IsAttacking", false);
         }
     }
 
     public void StopAttackAnimation()
     {
         animator.SetBool("IsAttacking", false);
+        animator.SetBool("IsWalking", false);
     }
 
     public void DoDeathAnimation()

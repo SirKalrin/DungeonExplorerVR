@@ -34,8 +34,7 @@ public class Backpack : MonoBehaviour
         {
             DisableSlotLighting();
             _slot4.ActivateSpotlight();
-            _selectedItem = _slot4.GetComponentInChildren<Item>().gameObject;
-            
+            _selectedItem = _slot4.GetComponentInChildren<Item>().gameObject;            
         }
 
         else if (Input.GetKey(KeyCode.UpArrow))
