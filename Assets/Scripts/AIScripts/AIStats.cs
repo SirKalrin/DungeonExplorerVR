@@ -17,7 +17,9 @@ public class AIStats : MonoBehaviour
 	void Start ()
 	{
         Health = 100*Level;
+
 	    MaxHealth = 100*Level;
+
 	    Damage = 20*Level;
 	}
 	
