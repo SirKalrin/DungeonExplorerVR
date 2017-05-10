@@ -8,17 +8,16 @@ public class Stats : MonoBehaviour
     [SerializeField]
     public int MaxHealth = 100;
     public int Health = 100;
-    public int Damage = 20;
+    public int MinDmg;
+    public int MaxDmg;
+    public int Points;
 
-	// Use this for initialization
-	void Start ()
-	{
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-	}
+    public int GetCalculatedDamage()
+    {
+        int damage = Random.Range(MinDmg, MaxDmg);
+        Points += damage;
+        return damage;
+    }
 
     public void TakeDamage(int damage)
     {
@@ -36,11 +35,21 @@ public class Stats : MonoBehaviour
         if (gameObject.tag == "Player")
         {
             Initiate.Fade("Death", Color.black, 1);
-            //SceneManager.LoadScene("Death");
         }
         else if (gameObject.tag == "EnemyAI")
         {
             gameObject.GetComponent<AIController>().Die();
         }
+    }
+    public void AddWeaponStats(MeleeWeapon eq)
+    {
+        MinDmg += eq.MinPhysicalDamage;
+        MaxDmg += eq.MaxPhysicalDamage;
+    }
+
+    public void RemoveStats(MeleeWeapon eq)
+    {
+        MinDmg -= eq.MinPhysicalDamage;
+        MaxDmg -= eq.MaxPhysicalDamage;
     }
 }
