@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StatController : PlayerStats {
+public class StatController : Stats {
 
     
     public float StrengthMultiplier = 2f;
@@ -43,12 +43,29 @@ public class StatController : PlayerStats {
 
         MaxHealth = Vitality * StatMultiplier;
         MaxEnergy = 100;
+        Health = MaxHealth;
     }
 
     public void TakeDamage(int damage)
     {
         Health -= damage;
         NextHealthRegen = Time.time + 5f;
+    }
+
+    public void AddWeaponStats(MeleeWeapon eq)
+    {
+        MinDmg += eq.MinPhysicalDamage;
+        MaxDmg += eq.MaxPhysicalDamage;
+        MinElementalDamage += eq.MinElementalDamage;
+        MaxElementalDamage += eq.MaxElementalDamage;
+    }
+
+    public void RemoveStats(MeleeWeapon eq)
+    {
+        MinDmg -= eq.MinPhysicalDamage;
+        MaxDmg -= eq.MaxPhysicalDamage;
+        MinElementalDamage -= eq.MinElementalDamage;
+        MaxElementalDamage -= eq.MaxElementalDamage;
     }
 
     private int CalculateStatByLevel(float multiplier)

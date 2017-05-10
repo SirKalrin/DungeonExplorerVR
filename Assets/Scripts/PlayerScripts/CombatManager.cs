@@ -36,4 +36,16 @@ public class CombatManager : MonoBehaviour
         target.GetComponentInParent<AIStats>().Health -= (int)damage;
         Debug.Log(target.GetComponentInParent<AIStats>().Health);
     }
+
+    public void MeleeHit(GameObject attacker, GameObject target, bool headshot)
+    {
+        Stats attackerStats = attacker.GetComponent<Stats>();
+        Stats targetStats = target.GetComponent<Stats>();
+        int damage = Random.Range(attackerStats.MinDmg, attackerStats.MaxDmg);
+        if (headshot)
+            damage *= 10;
+        damage = damage * attackerStats.Level / targetStats.Level;
+        StatController targetStatController = target.GetComponent<StatController>();
+        targetStatController.TakeDamage(damage);
+    }
 }

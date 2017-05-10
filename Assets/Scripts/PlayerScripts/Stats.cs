@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour {
+public class Stats : MonoBehaviour {
 
     public int Level;
     public int MaxHealth;
@@ -14,6 +14,11 @@ public class PlayerStats : MonoBehaviour {
     public int Intellect;
     public int Dexterity;
     public int Vitality;
+
+    public int MinDmg;
+    public int MaxDmg;
+    public int MinElementalDamage;
+    public int MaxElementalDamage;
 
     public float LevelMultiplier = 0.1f;
 }

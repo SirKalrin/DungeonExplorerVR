@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIStats : MonoBehaviour
+public class AIStats : Stats
 {
     [SerializeField]
     private Collider _hitbox;
-    public int Level = 1;
-    public int MaxHealth;
-    public int Health;
     private CombatManager _combatMgr;
     public int Damage;
     public bool IsReturningBack;
@@ -16,6 +13,8 @@ public class AIStats : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+	    Level = 1;
+
         Health = 100*Level;
 
 	    MaxHealth = 100*Level;
