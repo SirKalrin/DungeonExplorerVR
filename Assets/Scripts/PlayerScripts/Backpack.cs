@@ -83,6 +83,11 @@ public class Backpack : MonoBehaviour
         gameObject.SetActive(isOpen);
     }
 
+    public void EquipNextItem()
+    {
+        
+    }
+
     public void Equip()
     {
         if (_selectedItem)
