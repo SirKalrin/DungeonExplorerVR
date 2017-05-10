@@ -7,8 +7,6 @@ using UnityEngine;
 public class RangedWeapon : Weapon
 {
     private Quiver _quiver;
-
-    private AudioSource audio;
     public Transform ProjectileSpawn;
 
     public float DamageMultiplier;
@@ -16,7 +14,7 @@ public class RangedWeapon : Weapon
 	// Use this for initialization
 	void Start ()
 	{
-	    audio = GetComponent<AudioSource>();
+	    Attack1 = GetComponent<AudioSource>();
         _quiver = transform.parent.GetComponentInParent<Equipped>().Equipables.FirstOrDefault(x => x.tag == "Offhand").GetComponentInChildren<Quiver>();
 	}
 	
@@ -25,7 +23,7 @@ public class RangedWeapon : Weapon
         
     }
 
-    public override void Attack()
+    public override void Attack(float playerAttackSpeed)
     {
         if (_quiver != null)
         {
@@ -36,8 +34,8 @@ public class RangedWeapon : Weapon
                     ProjectileSpawn.rotation);
                 projectile.transform.forward = Camera.main.transform.forward;
                 projectile.GetComponent<Rigidbody>().velocity = projectile.transform.forward*Range/10;
-                if (!audio.isPlaying)
-                    audio.Play();
+                if (!Attack1.isPlaying)
+                    Attack1.Play();
                 Destroy(projectile, 10f);
             }
         }

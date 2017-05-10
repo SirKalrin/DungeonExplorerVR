@@ -5,25 +5,29 @@ using UnityEngine;
 public class MeleeWeapon : Weapon {
 
     public DamageType PhysicalDamageType;
-    public float MinPhysicalDamage;
-    public float MaxPhysicalDamage;
-    public float MinElementalDamage;
-    public float MaxElementalDamage;
-    public Animator anim;
+    public int MinPhysicalDamage;
+    public int MaxPhysicalDamage;
+    public int MinElementalDamage;
+    public int MaxElementalDamage;
+   
 
     // Use this for initialization
     void Start ()
     {
-        anim = GetComponent<Animator>();
+        Animator = GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        if (Animator.GetCurrentAnimatorStateInfo(0).IsName("Slashing"))
+        {
+            Animator.SetInteger("Slash", 0);
+        }
+    }
 
-    public override void Attack()
+    public override void Attack(float playerAttackSpeed)
     {
-        anim.SetInteger("Slash", 1);
+        Animator.speed = playerAttackSpeed;
+        Animator.SetInteger("Slash", 1);
     }
 }
