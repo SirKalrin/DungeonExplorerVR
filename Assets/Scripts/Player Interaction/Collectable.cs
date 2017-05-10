@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Collectable : PointerInteraction
-{
-    public void QuiverPickup()
+public class Collectable : MonoBehaviour {
+
+    void OnTriggerEnter(Collider collider)
     {
-        FindObjectOfType<Equipped>().FillQuiver(12);
-        Destroy(gameObject);
+        Debug.Log("IMMAGONNABEEATEN!");
+        if (collider.gameObject.tag == "Player")
+        {
+            collider.GetComponent<Stats>().Health += 20;
+            Destroy(gameObject);
+        }
     }
 }

@@ -17,6 +17,11 @@ public class Stats : MonoBehaviour
     {
         Health = MaxHealth;
     }
+
+    public void GainHealth(int health)
+    {
+        Health += health;
+    }
     public int GetCalculatedDamage()
     {
         int damage = Random.Range(_minDmg, _maxDmg);

@@ -19,7 +19,8 @@ public class Walk : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //MoveByInput();
+        if (Input.GetButton("Fire1"))
+            _charCtrl.SimpleMove(_vrHead.TransformDirection(Vector3.forward)*5.0f);
     }
 
     public void MoveByInput()
