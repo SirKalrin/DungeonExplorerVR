@@ -17,16 +17,19 @@ public class CombatManager : MonoBehaviour
         int damage = Random.Range(projectile.MinPhysicalDamage, projectile.MaxPhysicalDamage);
         if (headshot)
             damage *= 10;
-        target.GetComponentInParent<Stats>().TakeDamage(damage);
+        target.GetComponentInParent<Stats>().TakeDamage(damage); //TODO - Make ranged kills give the attacker points. Maybe refactor projectile to have a refference to the sender.
         Debug.Log("Health: " + target.GetComponentInParent<Stats>().Health);
     }
 
     public void MeleeHit(GameObject attacker, GameObject target, bool headshot)
     {
-        int damage = attacker.GetComponent<Stats>().GetCalculatedDamage();
+        Stats attackerStats = attacker.GetComponent<Stats>();
+        Stats targetStats = target.GetComponent<Stats>();
+        int damage = attackerStats.GetCalculatedDamage();
         if (headshot)
             damage *= 10;
-        target.GetComponent<Stats>().TakeDamage(damage);
+        if(targetStats.TakeDamage(damage))
+            attackerStats.AddPoints(targetStats.MaxHealth);
         Debug.Log("Health: " + target.GetComponentInParent<Stats>().Health);
     }
 }

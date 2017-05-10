@@ -5,28 +5,40 @@ using UnityEngine.SceneManagement;
 
 public class Stats : MonoBehaviour
 {
-    [SerializeField]
     public int MaxHealth = 100;
-    public int Health = 100;
-    public int MinDmg;
-    public int MaxDmg;
-    public int Points;
+    public int Health;
+    [SerializeField]
+    private int _minDmg;
+    [SerializeField]
+    private int _maxDmg;
+    private int _points;
 
+    void Start()
+    {
+        Health = MaxHealth;
+    }
     public int GetCalculatedDamage()
     {
-        int damage = Random.Range(MinDmg, MaxDmg);
-        Points += damage;
+        int damage = Random.Range(_minDmg, _maxDmg);
+        _points += damage;
         return damage;
     }
 
-    public void TakeDamage(int damage)
+    public bool TakeDamage(int damage)
     {
         Debug.Log("is taking damage: " + damage);
         Health -= damage;
         if (Health <= 0)
         {
             Die();
+            return true;
         }
+        return false;
+    }
+
+    public void AddPoints(int points)
+    {
+        _points += points;
     }
 
     private void Die()
@@ -43,13 +55,13 @@ public class Stats : MonoBehaviour
     }
     public void AddWeaponStats(MeleeWeapon eq)
     {
-        MinDmg += eq.MinPhysicalDamage;
-        MaxDmg += eq.MaxPhysicalDamage;
+        _minDmg += eq.MinPhysicalDamage;
+        _maxDmg += eq.MaxPhysicalDamage;
     }
 
     public void RemoveStats(MeleeWeapon eq)
     {
-        MinDmg -= eq.MinPhysicalDamage;
-        MaxDmg -= eq.MaxPhysicalDamage;
+        _minDmg -= eq.MinPhysicalDamage;
+        _maxDmg -= eq.MaxPhysicalDamage;
     }
 }
