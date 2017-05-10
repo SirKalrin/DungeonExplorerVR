@@ -2,17 +2,5 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MeleeWeapon
-{
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-
+public class Projectile : MeleeWeapon{
 }
