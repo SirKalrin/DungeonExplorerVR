@@ -19,14 +19,14 @@ public class Stats : MonoBehaviour
     public float HealthRegenRate = 0.5f;
     public float EnergyRegenRate = 0.1f;
 
-    private float NextHealthRegen;
-    private float NextEnergyRegen;
+    private float _nextHealthRegen;
+    private float _nextEnergyRegen;
 
     void Start()
     {
         Health = MaxHealth;
-        NextHealthRegen = Time.time + 1;
-        NextEnergyRegen = Time.time + 1;
+        _nextHealthRegen = Time.time + 1;
+        _nextEnergyRegen = Time.time + 1;
     }
 
     private void Update()
@@ -34,10 +34,15 @@ public class Stats : MonoBehaviour
         RegenStats();
     }
 
+    //Adds healt to the players Health stat. Ensures that Health never gets higher than MaxHealth.
     public void GainHealth(int health)
     {
         Health += health;
+        if (Health > MaxHealth)
+            Health = MaxHealth;
     }
+
+    //Returns a random number that is between _minDmg and _maxDmg
     public int GetCalculatedDamage()
     {
         int damage = Random.Range(_minDmg, _maxDmg);
@@ -45,6 +50,7 @@ public class Stats : MonoBehaviour
         return damage;
     }
 
+    //Returns wether or not Die() has been called. subtracts the given damage from the Healts variable. If Health is less than, or equal to 0, Die() is called. 
     public bool TakeDamage(int damage)
     {
         Debug.Log("is taking damage: " + damage);
@@ -57,11 +63,14 @@ public class Stats : MonoBehaviour
         return false;
     }
 
+    //Adds or subtracts the given points from the Points vaiable.
     public void AddPoints(int points)
     {
         _points += points;
     }
 
+    //Changes scene to the "Death" scene, if the gameobject implementing Stats has the tag "Player". 
+    //If the gameobject implementing Stats has the tag "EnemyAI", the Die() method in the AIController is called.
     private void Die()
     {
         Debug.Log("method: die, gameobject.tag: " + gameObject.tag);
@@ -74,12 +83,15 @@ public class Stats : MonoBehaviour
             gameObject.GetComponent<AIController>().Die();
         }
     }
+
+    //Adds the _minDmg and _maxDmg from the given equipment to the variables in Stats.
     public void AddWeaponStats(Equipment eq)
     {
         _minDmg += eq.MinPhysicalDamage;
         _maxDmg += eq.MaxPhysicalDamage;
     }
 
+    //Removes the _minDmg and _maxDmg from the given equipment to the variables in Stats.
     public void RemoveStats(Equipment eq)
     {
         _minDmg -= eq.MinPhysicalDamage;
@@ -88,16 +100,16 @@ public class Stats : MonoBehaviour
 
     private void RegenStats()
     {
-        if (Health < MaxHealth && Time.time >= NextHealthRegen)
+        if (Health < MaxHealth && Time.time >= _nextHealthRegen)
         {
             Health += 1;
-            NextHealthRegen = Time.time + HealthRegenRate;
+            _nextHealthRegen = Time.time + HealthRegenRate;
         }
 
-        if (Energy < MaxEnergy && Time.time >= NextEnergyRegen)
+        if (Energy < MaxEnergy && Time.time >= _nextEnergyRegen)
         {
             Energy += 1;
-            NextEnergyRegen = Time.time + EnergyRegenRate;
+            _nextEnergyRegen = Time.time + EnergyRegenRate;
         }
     }
 }

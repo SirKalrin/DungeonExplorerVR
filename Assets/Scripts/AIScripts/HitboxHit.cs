@@ -5,6 +5,8 @@ using UnityEngine;
 public class HitboxHit : MonoBehaviour
 {
     [SerializeField] private bool isHead;
+
+    //Adds damage to the target via the combatController when a gameobject with tag "projectile" enters the collider. 
     void OnTriggerEnter(Collider collider)
     {
 

@@ -23,6 +23,7 @@ public class Walk : MonoBehaviour
             _charCtrl.SimpleMove(_vrHead.TransformDirection(Vector3.forward)*5.0f);
     }
 
+    //Moves the player in the direction of the axis on the controller, relative to where the player is looking. If no axis is active, the player doesnt move.
     public void MoveByInput()
     {
         Vector3 direction = _vrHead.TransformDirection(Vector3.forward);
