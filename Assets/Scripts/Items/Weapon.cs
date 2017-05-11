@@ -5,14 +5,9 @@ using UnityEngine;
 public abstract class Weapon : Equipment
 {
     public WeaponType WeaponType;
-    public ElementalType ElementalDamageType;
-    public GameObject WeaponPrefab;
     public AudioSource Attack1;
-    public AudioSource Attack2;
     public AudioSource Hit1;
-    public AudioSource Hit2;
     public float Range;
-    public float AttackSpeed;
     
     public bool IsTwoHanded;
     public Animator Animator;
@@ -20,13 +15,13 @@ public abstract class Weapon : Equipment
 
     // Use this for initialization
     void Start () {
-		
-	}
+        
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+
+    }
 
     public abstract void Attack(float playerAttackSpeed);
 }

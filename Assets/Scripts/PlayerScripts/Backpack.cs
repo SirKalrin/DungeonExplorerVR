@@ -95,9 +95,13 @@ public class Backpack : MonoBehaviour
     {
         if (_selectedItem)
         {
+            
             GameObject returnedItem = _equipped.Equip(_selectedItem);
-            //_statController.RemoveStats(returnedItem.GetComponent<MeleeWeapon>());
-            //_statController.AddWeaponStats(_selectedItem.GetComponent<MeleeWeapon>());
+                _stats.RemoveStats(returnedItem.GetComponent<Equipment>());
+                _stats.AddWeaponStats(_selectedItem.GetComponent<Equipment>());
+            // Temp
+            _selectedItem.GetComponent<Equipment>().OwnerStats = _stats;
+
             Destroy(_selectedItem);
             Instantiate(returnedItem, _selectedItem.transform.parent);
         }

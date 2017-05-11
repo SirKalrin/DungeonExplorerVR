@@ -12,7 +12,7 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    public void ProjectileHit(GameObject target, Arrow projectile, bool headshot)
+    public void ProjectileHit(GameObject target, MeleeWeapon projectile, bool headshot)
     {
         int damage = Random.Range(projectile.MinPhysicalDamage, projectile.MaxPhysicalDamage);
         if (headshot)
@@ -21,15 +21,13 @@ public class CombatManager : MonoBehaviour
         Debug.Log("Health: " + target.GetComponentInParent<Stats>().Health);
     }
 
-    public void MeleeHit(GameObject attacker, GameObject target, bool headshot)
+    public void MeleeHit(Stats attackerStats, Stats targetStats, bool headshot)
     {
-        Stats attackerStats = attacker.GetComponent<Stats>();
-        Stats targetStats = target.GetComponent<Stats>();
         int damage = attackerStats.GetCalculatedDamage();
         if (headshot)
             damage *= 10;
         if(targetStats.TakeDamage(damage))
             attackerStats.AddPoints(targetStats.MaxHealth);
-        Debug.Log("Health: " + target.GetComponentInParent<Stats>().Health);
+        Debug.Log("Health: " + targetStats.Health);
     }
 }

@@ -6,17 +6,18 @@ using UnityEngine;
 
 public class RangedWeapon : Weapon
 {
-    private Quiver _quiver;
+    public int Projectiles = 10;
     public Transform ProjectileSpawn;
-
+    public GameObject ProjectilePrefab;
     public float DamageMultiplier;
 
 	// Use this for initialization
 	void Start ()
 	{
-	    Attack1 = GetComponent<AudioSource>();
-        _quiver = transform.parent.GetComponentInParent<Equipped>().Equipables.FirstOrDefault(x => x.tag == "Offhand").GetComponentInChildren<Quiver>();
-	}
+        Animator = GetComponent<Animator>();
+        Attack1 = GetComponent<AudioSource>();
+        ProjectilePrefab.GetComponent<Item>().OwnerStats = OwnerStats;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -25,12 +26,11 @@ public class RangedWeapon : Weapon
 
     public override void Attack(float playerAttackSpeed)
     {
-        if (_quiver != null)
-        {
-            if (_quiver.Projectiles > 0)
+
+            if (Projectiles > 0)
             {
-                _quiver.Projectiles--;
-                var projectile = Instantiate(_quiver.ProjectilePrefab, ProjectileSpawn.position,
+                Projectiles--;
+                var projectile = Instantiate(ProjectilePrefab, ProjectileSpawn.position,
                     ProjectileSpawn.rotation);
                 projectile.transform.forward = Camera.main.transform.forward;
                 projectile.GetComponent<Rigidbody>().velocity = projectile.transform.forward*Range/10;
@@ -38,6 +38,5 @@ public class RangedWeapon : Weapon
                     Attack1.Play();
                 Destroy(projectile, 10f);
             }
-        }
     }
 }
