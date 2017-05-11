@@ -7,15 +7,31 @@ public class Stats : MonoBehaviour
 {
     public int MaxHealth = 100;
     public int Health;
+    public int Energy;
+    public int MaxEnergy;
+
     [SerializeField]
     private int _minDmg;
     [SerializeField]
     private int _maxDmg;
     private int _points;
 
+    public float HealthRegenRate = 0.5f;
+    public float EnergyRegenRate = 0.1f;
+
+    private float NextHealthRegen;
+    private float NextEnergyRegen;
+
     void Start()
     {
         Health = MaxHealth;
+        NextHealthRegen = Time.time + 1;
+        NextEnergyRegen = Time.time + 1;
+    }
+
+    private void Update()
+    {
+        RegenStats();
     }
 
     public void GainHealth(int health)
@@ -58,15 +74,30 @@ public class Stats : MonoBehaviour
             gameObject.GetComponent<AIController>().Die();
         }
     }
-    public void AddWeaponStats(MeleeWeapon eq)
+    public void AddWeaponStats(Equipment eq)
     {
         _minDmg += eq.MinPhysicalDamage;
         _maxDmg += eq.MaxPhysicalDamage;
     }
 
-    public void RemoveStats(MeleeWeapon eq)
+    public void RemoveStats(Equipment eq)
     {
         _minDmg -= eq.MinPhysicalDamage;
         _maxDmg -= eq.MaxPhysicalDamage;
+    }
+
+    private void RegenStats()
+    {
+        if (Health < MaxHealth && Time.time >= NextHealthRegen)
+        {
+            Health += 1;
+            NextHealthRegen = Time.time + HealthRegenRate;
+        }
+
+        if (Energy < MaxEnergy && Time.time >= NextEnergyRegen)
+        {
+            Energy += 1;
+            NextEnergyRegen = Time.time + EnergyRegenRate;
+        }
     }
 }

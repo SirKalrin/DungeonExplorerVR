@@ -2,5 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Arrow : Projectile {
+public class Arrow : MonoBehaviour {
+    public Stats ShooterStats;
 }

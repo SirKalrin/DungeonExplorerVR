@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class MeleeWeapon : Weapon {
 
-    public DamageType PhysicalDamageType;
-    public int MinPhysicalDamage;
-    public int MaxPhysicalDamage;
-    public int MinElementalDamage;
-    public int MaxElementalDamage;
-   
 
     // Use this for initialization
     void Start ()
@@ -22,6 +16,11 @@ public class MeleeWeapon : Weapon {
         if (Animator.GetCurrentAnimatorStateInfo(0).IsName("Slashing"))
         {
             Animator.SetInteger("Slash", 0);
+            this.transform.tag = "Projectile";
+        }
+        else
+        {
+            this.transform.tag = "Mainhand";
         }
     }
 
