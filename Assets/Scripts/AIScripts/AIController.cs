@@ -15,12 +15,12 @@ public class AIController : MonoBehaviour
     private AIAnimations _animationController;
     private Transform _myTransform;
     private Vector3 _startPosition;
-    private GameObject _combatCtr;
+    private CombatManager _combatMgr;
     private float _timeToStrike;
 
     void Start()
     {
-        _combatCtr = GameObject.FindGameObjectWithTag("CombatController");
+        _combatMgr = GameObject.FindGameObjectWithTag("GameController").GetComponent<CombatManager>();
         _movementController = transform.GetComponent<AIMovements>();
         _animationController = transform.GetComponent<AIAnimations>();
         _myTransform = this.transform;
@@ -86,7 +86,7 @@ public class AIController : MonoBehaviour
         if (Time.time > _timeToStrike + _attackCooldown && _animationController.IsReadyToAttack())
         {
             _animationController.DoAttackAnimation(AttackRate);
-            _combatCtr.GetComponent<CombatManager>().MeleeHit(GetComponent<Stats>(), Target.GetComponent<Stats>(), false);
+            _combatMgr.Hit(GetComponent<Stats>(), Target.GetComponent<Stats>(), false);
             _timeToStrike = Time.time + AttackRate;
         }
         else

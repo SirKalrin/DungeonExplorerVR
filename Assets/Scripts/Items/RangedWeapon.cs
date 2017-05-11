@@ -16,7 +16,6 @@ public class RangedWeapon : Weapon
 	{
         Animator = GetComponent<Animator>();
         Attack1 = GetComponent<AudioSource>();
-        ProjectilePrefab.GetComponent<Equipment>().OwnerStats = OwnerStats;
     }
 	
 	// Update is called once per frame
@@ -26,12 +25,12 @@ public class RangedWeapon : Weapon
 
     public override void Attack(float playerAttackSpeed)
     {
-
             if (Projectiles > 0)
             {
                 Projectiles--;
-                var projectile = Instantiate(ProjectilePrefab, ProjectileSpawn.position,
+                GameObject projectile = Instantiate(ProjectilePrefab, ProjectileSpawn.position,
                     ProjectileSpawn.rotation);
+                projectile.GetComponent<Item>().OwnerStats = OwnerStats;
                 projectile.transform.forward = Camera.main.transform.forward;
                 projectile.GetComponent<Rigidbody>().velocity = projectile.transform.forward*Range/10;
                 if (!Attack1.isPlaying)

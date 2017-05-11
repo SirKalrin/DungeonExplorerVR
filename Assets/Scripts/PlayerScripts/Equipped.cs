@@ -6,16 +6,13 @@ using UnityEngine;
 public class Equipped : MonoBehaviour
 { 
     public List<GameObject> Equipables;
-    public GameObject ToBeEquipeed;
-    public GameObject ToBeEquipeed2;
     private Stats _stats;
+    private StatsManager _statsManager;
 
     void Start()
     {
         _stats = transform.parent.GetComponentInParent<Stats>();
-
-        Equip(ToBeEquipeed);
-        Equip(ToBeEquipeed2);
+        _statsManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<StatsManager>();
     }
 
     void Update()
@@ -24,19 +21,22 @@ public class Equipped : MonoBehaviour
 
     public GameObject Equip(GameObject prefab)
     {
-        var equipSpot = Equipables.FirstOrDefault(x => prefab.tag == x.tag);
         GameObject switchedItem = null;
-        if (equipSpot != null)
+        if (prefab != null)
         {
-            if (equipSpot.GetComponentInChildren<Item>() != null)
+            var equipSpot = Equipables.FirstOrDefault(x => prefab.tag == x.tag);
+            if (equipSpot != null)
             {
-                switchedItem = equipSpot.GetComponentInChildren<Item>().gameObject;
-                _stats.RemoveStats(switchedItem.GetComponent<Equipment>());
-                GameObject.Destroy(switchedItem);
+                if (equipSpot.GetComponentInChildren<Item>() != null)
+                {
+                    switchedItem = equipSpot.GetComponentInChildren<Item>().gameObject;
+                    _statsManager.RemoveStats(_stats, switchedItem.GetComponent<Equipment>());
+                    GameObject.Destroy(switchedItem);
+                }
+                prefab.GetComponent<Item>().OwnerStats = _stats;
+                _statsManager.AddStats(_stats, prefab.GetComponent<Equipment>());
+                Instantiate(prefab, equipSpot.transform);
             }
-            prefab.GetComponent<Item>().OwnerStats = _stats;
-            _stats.AddWeaponStats(prefab.GetComponent<Equipment>());
-            Instantiate(prefab, equipSpot.transform);         
         }
         return switchedItem;
     }

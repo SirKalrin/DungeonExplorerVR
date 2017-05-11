@@ -36,28 +36,28 @@ public class Backpack : MonoBehaviour
         {
             DisableSlotLighting();
             _slot4.ActivateSpotlight();
-            _selectedItem = _slot4.GetComponentInChildren<Item>().gameObject;            
+            SetSelectedItem(_slot4);        
         }
 
         else if (Input.GetKey(KeyCode.UpArrow))
         {
             DisableSlotLighting();
             _slot1.ActivateSpotlight();
-            _selectedItem = _slot1.GetComponentInChildren<Item>().gameObject;
+            SetSelectedItem(_slot1);
 
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             DisableSlotLighting();
             _slot2.ActivateSpotlight();
-            _selectedItem = _slot2.GetComponentInChildren<Item>().gameObject;
+            SetSelectedItem(_slot2);
 
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
             DisableSlotLighting();
             _slot3.ActivateSpotlight();
-            _selectedItem = _slot3.GetComponentInChildren<Item>().gameObject;
+            SetSelectedItem(_slot3);
         }
         else
         {
@@ -68,6 +68,16 @@ public class Backpack : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space))
         {
             Equip();
+        }
+    }
+
+    private void SetSelectedItem(SlotToggler slot)
+    {
+        if (slot.GetComponentInChildren<Item>() == null)
+            _selectedItem = null;
+        else
+        {
+            _selectedItem = slot.GetComponentInChildren<Item>().gameObject;
         }
     }
 
@@ -92,11 +102,9 @@ public class Backpack : MonoBehaviour
 
     public void Equip()
     {
-        if (_selectedItem)
-        {
             GameObject returnedItem = _equipped.Equip(_selectedItem);
             Destroy(_selectedItem);
+            if (returnedItem != null)
             Instantiate(returnedItem, _selectedItem.transform.parent);
-        }
     }
 }

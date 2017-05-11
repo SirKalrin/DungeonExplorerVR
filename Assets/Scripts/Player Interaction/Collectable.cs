@@ -12,7 +12,7 @@ public class Collectable : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player") 
         {
-            collider.GetComponent<Stats>().GainHealth(_healthGain);
+            GameObject.FindGameObjectWithTag("GameManager").GetComponent<StatsManager>().GainHealth(collider.GetComponent<Stats>(), _healthGain);
             gameObject.GetComponent<AudioSource>().Play();
             gameObject.GetComponent<MeshRenderer>().enabled = false;
             Destroy(gameObject, gameObject.GetComponent<AudioSource>().clip.length);

@@ -14,7 +14,7 @@ public class HitboxHit : MonoBehaviour
         {
             //GameObject.FindGameObjectWithTag("CombatController").GetComponent<CombatManager>().ProjectileHit(gameObject, collider.gameObject.GetComponent<MeleeWeapon>(), isHead);
 
-            GameObject.FindGameObjectWithTag("CombatController").GetComponent<CombatManager>().MeleeHit(collider.gameObject.GetComponent<MeleeWeapon>().OwnerStats, gameObject.transform.parent.GetComponentInParent<Stats>(), isHead);
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<CombatManager>().Hit(collider.gameObject.GetComponent<Item>().OwnerStats, gameObject.transform.parent.GetComponentInParent<Stats>(), isHead);
         }
     }
 }
