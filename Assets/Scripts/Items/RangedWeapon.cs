@@ -16,7 +16,7 @@ public class RangedWeapon : Weapon
 	{
         Animator = GetComponent<Animator>();
         Attack1 = GetComponent<AudioSource>();
-        ProjectilePrefab.GetComponent<Item>().OwnerStats = OwnerStats;
+        ProjectilePrefab.GetComponent<Equipment>().OwnerStats = OwnerStats;
     }
 	
 	// Update is called once per frame

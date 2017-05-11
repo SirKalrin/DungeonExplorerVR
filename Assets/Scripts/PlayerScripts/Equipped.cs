@@ -8,9 +8,12 @@ public class Equipped : MonoBehaviour
     public List<GameObject> Equipables;
     public GameObject ToBeEquipeed;
     public GameObject ToBeEquipeed2;
+    private Stats _stats;
 
     void Start()
     {
+        _stats = transform.parent.GetComponentInParent<Stats>();
+
         Equip(ToBeEquipeed);
         Equip(ToBeEquipeed2);
     }
@@ -28,9 +31,12 @@ public class Equipped : MonoBehaviour
             if (equipSpot.GetComponentInChildren<Item>() != null)
             {
                 switchedItem = equipSpot.GetComponentInChildren<Item>().gameObject;
+                _stats.RemoveStats(switchedItem.GetComponent<Equipment>());
                 GameObject.Destroy(switchedItem);
             }
-            Instantiate(prefab, equipSpot.transform);
+            prefab.GetComponent<Item>().OwnerStats = _stats;
+            _stats.AddWeaponStats(prefab.GetComponent<Equipment>());
+            Instantiate(prefab, equipSpot.transform);         
         }
         return switchedItem;
     }

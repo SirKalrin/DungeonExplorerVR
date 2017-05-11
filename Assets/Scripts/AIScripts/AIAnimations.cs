@@ -14,8 +14,15 @@ public class AIAnimations : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        {
+            transform.FindChild("Bip001").FindChild("Bip001 Pelvis").FindChild("Bip001 Spine").FindChild("Bip001 Neck").FindChild("Bip001 R Clavicle").tag = "Projectile";
+        }
+        else
+        {
+            transform.FindChild("Bip001").FindChild("Bip001 Pelvis").FindChild("Bip001 Spine").FindChild("Bip001 Neck").FindChild("Bip001 R Clavicle").tag = "AISword";
+        }
+    }
 
     public void StartWalkAnimation()
     {

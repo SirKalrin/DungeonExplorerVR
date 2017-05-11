@@ -6,13 +6,16 @@ public class PlayerBehaviour : MonoBehaviour
 {
     private Backpack _backpack;
     private Walk _movement;
+    private Stats _playerStats;
     private float _atkCooldown;
+    
     // Use this for initialization
     void Start()
     {
         _atkCooldown = 0;
         _backpack = transform.FindChild("Main Camera").FindChild("Canvas").GetComponentInChildren<Backpack>();
         _movement = GetComponent<Walk>();
+        _playerStats = GetComponent<Stats>();
         _backpack.ToggleBackpack();
     }
 
@@ -32,7 +35,7 @@ public class PlayerBehaviour : MonoBehaviour
     private void Attack()
     {
         Weapon weapon = this.gameObject.GetComponentInChildren<Weapon>();
-        weapon.Attack(weapon.AttackSpeed);
+        weapon.Attack(_playerStats.AttackSpeed);
 
     }
 }

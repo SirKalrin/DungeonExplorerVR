@@ -2,5 +2,5 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MeleeWeapon{
+public class Projectile : Item{
 }

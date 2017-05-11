@@ -86,13 +86,14 @@ public class AIController : MonoBehaviour
         if (Time.time > _timeToStrike + _attackCooldown && _animationController.IsReadyToAttack())
         {
             _animationController.DoAttackAnimation(AttackRate);
-            _combatCtr.GetComponent<CombatManager>().AttackTarget(gameObject, Target);
+            _combatCtr.GetComponent<CombatManager>().MeleeHit(GetComponent<Stats>(), Target.GetComponent<Stats>(), false);
             _timeToStrike = Time.time + AttackRate;
         }
         else
         {
             _animationController.StopAttackAnimation();
         }
+        
     }
 
     void OnTriggerStay(Collider col)

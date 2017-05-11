@@ -10,11 +10,10 @@ public class Stats : MonoBehaviour
     public int Energy;
     public int MaxEnergy;
 
-    [SerializeField]
-    private int _minDmg;
-    [SerializeField]
-    private int _maxDmg;
-    private int _points;
+    public int MinDmg;
+    public int MaxDmg;
+    public float AttackSpeed;
+    public int Points;
 
     public float HealthRegenRate = 0.5f;
     public float EnergyRegenRate = 0.1f;
@@ -45,8 +44,8 @@ public class Stats : MonoBehaviour
     //Returns a random number that is between _minDmg and _maxDmg
     public int GetCalculatedDamage()
     {
-        int damage = Random.Range(_minDmg, _maxDmg);
-        _points += damage;
+        int damage = Random.Range(MinDmg, MaxDmg);
+        Points += damage;
         return damage;
     }
 
@@ -66,7 +65,7 @@ public class Stats : MonoBehaviour
     //Adds or subtracts the given points from the Points vaiable.
     public void AddPoints(int points)
     {
-        _points += points;
+        Points += points;
     }
 
     //Changes scene to the "Death" scene, if the gameobject implementing Stats has the tag "Player". 
@@ -87,15 +86,19 @@ public class Stats : MonoBehaviour
     //Adds the _minDmg and _maxDmg from the given equipment to the variables in Stats.
     public void AddWeaponStats(Equipment eq)
     {
-        _minDmg += eq.MinPhysicalDamage;
-        _maxDmg += eq.MaxPhysicalDamage;
+        MinDmg += eq.MinPhysicalDamage;
+        MaxDmg += eq.MaxPhysicalDamage;
+        AttackSpeed += eq.AttackSpeed;
+        
     }
 
     //Removes the _minDmg and _maxDmg from the given equipment to the variables in Stats.
     public void RemoveStats(Equipment eq)
     {
-        _minDmg -= eq.MinPhysicalDamage;
-        _maxDmg -= eq.MaxPhysicalDamage;
+        MinDmg -= eq.MinPhysicalDamage;
+        MaxDmg -= eq.MaxPhysicalDamage;
+        AttackSpeed -= eq.AttackSpeed;
+
     }
 
     private void RegenStats()

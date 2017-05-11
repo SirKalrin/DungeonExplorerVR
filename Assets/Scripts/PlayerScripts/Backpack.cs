@@ -15,7 +15,7 @@ public class Backpack : MonoBehaviour
     private GameObject _selectedItem;
     private Equipped _equipped;
 
-    private Stats _stats;
+    
 
     private bool isOpen;
     // Use this for initialization
@@ -26,7 +26,6 @@ public class Backpack : MonoBehaviour
         _slot3 = transform.FindChild("Slot3").GetComponent<SlotToggler>();
         _slot4 = transform.FindChild("Slot4").GetComponent<SlotToggler>();
         _equipped = transform.parent.parent.GetComponentInChildren<Equipped>();
-        _stats = transform.parent.parent.GetComponentInParent<Stats>();
         isOpen = true;
     }
 
@@ -95,13 +94,7 @@ public class Backpack : MonoBehaviour
     {
         if (_selectedItem)
         {
-            
             GameObject returnedItem = _equipped.Equip(_selectedItem);
-                _stats.RemoveStats(returnedItem.GetComponent<Equipment>());
-                _stats.AddWeaponStats(_selectedItem.GetComponent<Equipment>());
-            // Temp
-            _selectedItem.GetComponent<Equipment>().OwnerStats = _stats;
-
             Destroy(_selectedItem);
             Instantiate(returnedItem, _selectedItem.transform.parent);
         }
