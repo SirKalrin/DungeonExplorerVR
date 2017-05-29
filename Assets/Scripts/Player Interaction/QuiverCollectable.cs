@@ -2,12 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuiverCollectable : PointerInteraction
-{
-    //Adds 12 arrows to the players Quiver. Destroys the gameobject.
-    public void QuiverPickup()
+public class QuiverCollectable : MonoBehaviour {
+
+    void OnTriggerEnter(Collider collider)
     {
-        FindObjectOfType<Equipped>().FillQuiver(12);
-        Destroy(gameObject);
+        if (collider.gameObject.tag == "Player")
+        {
+            
+            Debug.Log(collider.gameObject.transform.GetChild(0).GetChild(1).GetChild(0).GetComponentInChildren<RangedWeapon>());
+            collider.gameObject.transform.GetChild(0).GetChild(1).GetChild(0).GetComponentInChildren<RangedWeapon>().Projectiles +=
+                10;           
+            gameObject.GetComponent<AudioSource>().Play();
+            gameObject.GetComponent<MeshRenderer>().enabled = false;        
+            Destroy(gameObject, gameObject.GetComponent<AudioSource>().clip.length);
+        }
     }
 }
