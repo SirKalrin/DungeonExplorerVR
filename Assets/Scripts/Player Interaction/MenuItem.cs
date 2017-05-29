@@ -17,7 +17,7 @@ public class MenuItem : PointerInteraction
     }
     public void BClicked()
     {
-        SceneManager.LoadScene("BTS2");
+        SceneManager.LoadScene("ArenaGamemode");
     }
     public void MClicked()
     {
@@ -33,14 +33,14 @@ public class MenuItem : PointerInteraction
         base.PointerEntered();
         _audio.PlayOneShot(_enterSound);
         LightSource.enabled = true;
-        transform.position = new Vector3(transform.position.x + 0.2f, transform.position.y, transform.position.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.2f);
     }
     public new void PointerExited()
     {
         base.PointerExited();
         _audio.PlayOneShot(_exitSound);
         LightSource.enabled = false;
-        transform.position = new Vector3(transform.position.x - 0.2f, transform.position.y, transform.position.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.2f);
     }
 
 }

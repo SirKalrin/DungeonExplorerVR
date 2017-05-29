@@ -60,6 +60,7 @@ public class StatsManager : MonoBehaviour
         Debug.Log("method: die, gameobject.tag: " + targetStats.gameObject.tag);
         if (targetStats.gameObject.tag == "Player")
         {
+            targetStats.SaveStats();
             Initiate.Fade("Death", Color.black, 1);
         }
         else if (targetStats.gameObject.tag == "EnemyAI")

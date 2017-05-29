@@ -21,6 +21,11 @@ public class Stats : MonoBehaviour
     private float _nextHealthRegen;
     private float _nextEnergyRegen;
 
+    void Awake()
+    {
+        Points = GlobalPointSystem.Instance.points;
+    }
+
     // Use this for initialization
     void Start()
     {
@@ -48,6 +53,11 @@ public class Stats : MonoBehaviour
             Energy += 1;
             _nextEnergyRegen = Time.time + EnergyRegenRate;
         }
+    }
+
+    public void SaveStats()
+    {
+        GlobalPointSystem.Instance.points = Points;
     }
 
 }
