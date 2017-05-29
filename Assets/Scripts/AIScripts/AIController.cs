@@ -42,7 +42,7 @@ public class AIController : MonoBehaviour
                 var distance = Vector3.Distance(_myTransform.position, Target.transform.position);
                 EngageTarget(distance);
             }
-            else if (Vector3.Distance(transform.position, _startPosition) > 1)
+            else if (Vector3.Distance(transform.position, _startPosition) > 3)
             {
                 //_stats.IsReturningBack = true;
                 _movementController.MoveForward(_startPosition);

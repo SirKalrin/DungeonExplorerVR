@@ -23,7 +23,7 @@ public class Stats : MonoBehaviour
 
     void Awake()
     {
-        Points = GlobalPointSystem.Instance.points;
+        
     }
 
     // Use this for initialization
@@ -32,6 +32,7 @@ public class Stats : MonoBehaviour
         _nextHealthRegen = Time.time + 1;
         _nextEnergyRegen = Time.time + 1;
         Health = MaxHealth;
+        Points = GlobalPointSystem.Instance.points;
     }
 
 

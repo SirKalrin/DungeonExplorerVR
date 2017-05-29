@@ -16,6 +16,7 @@ public class HitboxHit : MonoBehaviour
             if(!audioSource.isPlaying)
                 audioSource.Play();
             GameObject.FindGameObjectWithTag("GameController").GetComponent<CombatManager>().Hit(collider.gameObject.GetComponent<Item>().OwnerStats, gameObject.transform.parent.GetComponentInParent<Stats>(), isHead);
+            Destroy(collider.gameObject);
         }
     }
 }
