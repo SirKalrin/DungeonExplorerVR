@@ -38,6 +38,12 @@ public class CombatManager : MonoBehaviour
             if (_statsManager.TakeDamage(targetStats, damage))
                 _statsManager.AddPoints(attackerStats, targetStats.MaxHealth);
             Debug.Log("Health: " + targetStats.Health);
+            
+            if(targetStats.transform.tag == "EnemyAI")
+            {
+                // Aggroes attacker
+                targetStats.transform.GetComponent<AIController>().Target = attackerStats.transform.gameObject;
+            }
         }
     }
 }

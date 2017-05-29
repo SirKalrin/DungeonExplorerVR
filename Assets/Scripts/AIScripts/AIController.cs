@@ -83,7 +83,7 @@ public class AIController : MonoBehaviour
 
     private void AttackIfPossible()
     {
-        if (Time.time > _timeToStrike + _attackCooldown && _animationController.IsReadyToAttack())
+        if (Time.time > _timeToStrike && _animationController.IsReadyToAttack())
         {
             _animationController.DoAttackAnimation(AttackRate);
             _combatMgr.Hit(GetComponent<Stats>(), Target.GetComponent<Stats>(), false);
@@ -93,7 +93,6 @@ public class AIController : MonoBehaviour
         {
             _animationController.StopAttackAnimation();
         }
-        
     }
 
     void OnTriggerStay(Collider col)
@@ -129,18 +128,18 @@ public class AIController : MonoBehaviour
         }
     }
 
-    void OnTriggerExit(Collider col)
-    {
-        if (col.gameObject.Equals(Target))
-        {
-            Target = null;
-            _animationController.StopWalkAnimation();
-            var enemies = GameObject.FindGameObjectsWithTag("EnemyAI");
-            foreach(var enemy in enemies)
-            {
-                enemy.GetComponent<AIController>().Target = null;
-            }
-        }
-    }
+    //void OnTriggerExit(Collider col)
+    //{
+    //    if (col.gameObject.Equals(Target))
+    //    {
+    //        Target = null;
+    //        _animationController.StopWalkAnimation();
+    //        var enemies = GameObject.FindGameObjectsWithTag("EnemyAI");
+    //        foreach(var enemy in enemies)
+    //        {
+    //            enemy.GetComponent<AIController>().Target = null;
+    //        }
+    //    }
+    //}
 
 }

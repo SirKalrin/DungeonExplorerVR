@@ -25,7 +25,6 @@ public class EnemySpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (Time.time > nextWaveTime)
         {
             NextWave(++wave);
@@ -36,13 +35,10 @@ public class EnemySpawn : MonoBehaviour
     void NextWave(int wave)
     {
         spawnPointCount = this.transform.childCount;
-        //waveTxt.text = "Wave: " + wave;
-
         StartCoroutine(SpawnCoroutine(wave));
 
         waveCoolDown += 5f;
         nextWaveTime = Time.time + waveCoolDown;
-
     }
 
     private IEnumerator SpawnCoroutine(int wave)
@@ -56,10 +52,11 @@ public class EnemySpawn : MonoBehaviour
             }
             else
             {
-                var enemy = Instantiate(Enemy, this.gameObject.transform.GetChild(i).position, Quaternion.identity);
+                var enemy = Instantiate(Enemy, 
+                    this.gameObject.transform.GetChild(i).position,
+                    Quaternion.identity);
                 enemy.SetActive(true);
             }
         }
-
     }
 }

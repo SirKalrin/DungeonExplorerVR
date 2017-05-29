@@ -10,6 +10,7 @@ public class RangedWeapon : Weapon
     public Transform ProjectileSpawn;
     public GameObject ProjectilePrefab;
     public float DamageMultiplier;
+    private float tmpCooldown;
 
 	// Use this for initialization
 	void Start ()
@@ -25,7 +26,7 @@ public class RangedWeapon : Weapon
 
     public override void Attack(float playerAttackSpeed)
     {
-            if (Projectiles > 0)
+            if (Projectiles > 0 && Time.time > tmpCooldown)
             {
                 Projectiles--;
                 GameObject projectile = Instantiate(ProjectilePrefab, ProjectileSpawn.position,
@@ -36,6 +37,7 @@ public class RangedWeapon : Weapon
                 if (!Attack1.isPlaying)
                     Attack1.Play();
                 Destroy(projectile, 10f);
+            tmpCooldown = Time.time + AttackSpeed;
             }
     }
 }
