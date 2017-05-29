@@ -20,7 +20,11 @@ public class Walk : MonoBehaviour
     void Update()
     {
         if (Input.GetButton("Fire1"))
-            _charCtrl.SimpleMove(_vrHead.TransformDirection(Vector3.forward)*5.0f);
+            _charCtrl.SimpleMove(_vrHead.TransformDirection(Vector3.forward)*2.5f);
+        else
+        {
+            _charCtrl.SimpleMove(_vrHead.TransformDirection(Vector3.forward) * 0f);
+        }
     }
 
     //Moves the player in the direction of the axis on the controller, relative to where the player is looking. If no axis is active, the player doesnt move.
@@ -53,11 +57,11 @@ public class Walk : MonoBehaviour
             Debug.Log("Left");
         }
 
-        else
-        {
-            MoveSpeed = 0.0f;
-        }
+        //else
+        //{
+        //    MoveSpeed = 0.0f;
+        //}
 
-        _charCtrl.SimpleMove(direction*MoveSpeed);
+        //_charCtrl.SimpleMove(direction*MoveSpeed);
     }
 }

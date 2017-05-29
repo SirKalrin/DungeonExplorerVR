@@ -17,14 +17,16 @@ public class AIController : MonoBehaviour
     private Vector3 _startPosition;
     private CombatManager _combatMgr;
     private float _timeToStrike;
+    private bool isDead;
 
     void Start()
     {
+        isDead = false;
         _combatMgr = GameObject.FindGameObjectWithTag("GameController").GetComponent<CombatManager>();
         _movementController = transform.GetComponent<AIMovements>();
         _animationController = transform.GetComponent<AIAnimations>();
         _myTransform = this.transform;
-        _startPosition = new Vector3(this.transform.position.x, 44.84886f, transform.position.z);
+        _startPosition = new Vector3(0, 0.8f, 1.4f);
         _timeToStrike = Time.time;
         _attackCooldown = 1.3f/AttackRate;
     }
@@ -32,12 +34,8 @@ public class AIController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //if (_stats.Health <= 0)
-        //{
-        //    Die();
-        //}
-        //else
-        //{
+        if (!isDead)
+        {
             // If there is a target in radius
             if (Target != null)
             {
@@ -55,13 +53,15 @@ public class AIController : MonoBehaviour
             {
                 _animationController.StopWalkAnimation();
             }
-        //}
+        }
     }
 
     public void Die()
     {
         _animationController.DoDeathAnimation();
-        _movementController.MoveForward(transform.position);
+        _movementController.MoveForward(this.transform.position);
+        GameObject.Destroy(this.gameObject, 10);
+        isDead = true;
     }
 
     private void EngageTarget(float distance)
