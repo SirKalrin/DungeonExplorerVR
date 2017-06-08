@@ -15,7 +15,7 @@ public class Backpack : MonoBehaviour
     private GameObject _selectedItem;
     private Equipped _equipped;
 
-    
+
 
     private bool isOpen;
     // Use this for initialization
@@ -36,7 +36,7 @@ public class Backpack : MonoBehaviour
         {
             DisableSlotLighting();
             _slot4.ActivateSpotlight();
-            SetSelectedItem(_slot4);        
+            SetSelectedItem(_slot4);
         }
 
         else if (Input.GetKey(KeyCode.UpArrow))
@@ -97,14 +97,17 @@ public class Backpack : MonoBehaviour
 
     public void EquipNextItem()
     {
-        
+
     }
 
     public void Equip()
     {
-            GameObject returnedItem = _equipped.Equip(_selectedItem);
-            Destroy(_selectedItem);
-            if (returnedItem != null)
+        GameObject returnedItem = _equipped.Equip(_selectedItem);
+        Destroy(_selectedItem);
+        if (returnedItem)
+        {
             Instantiate(returnedItem, _selectedItem.transform.parent);
+            Destroy(returnedItem);
+        }
     }
 }

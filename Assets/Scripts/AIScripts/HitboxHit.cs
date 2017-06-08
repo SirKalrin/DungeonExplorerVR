@@ -15,9 +15,17 @@ public class HitboxHit : MonoBehaviour
             var audioSource = gameObject.GetComponentInParent<AudioSource>();
             if(audioSource && !audioSource.isPlaying)
                 audioSource.Play();
-            GameObject.FindGameObjectWithTag("GameController").GetComponent<CombatManager>().Hit(collider.gameObject.GetComponent<Item>().OwnerStats, gameObject.transform.parent.GetComponentInParent<Stats>(), isHead);
-            if (!collider.transform.parent)
-            Destroy(collider.gameObject);
+
+            Stats attackerStats = collider.gameObject.GetComponent<Item>().OwnerStats;
+            Stats targetStats = gameObject.transform.parent.GetComponentInParent<Stats>();
+
+            if (attackerStats != targetStats)
+            {
+                GameObject.FindGameObjectWithTag("GameController").GetComponent<CombatManager>()
+                    .Hit(attackerStats, targetStats, isHead);
+                if (!collider.transform.parent)
+                    Destroy(collider.gameObject);
+            }
         }
     }
 }

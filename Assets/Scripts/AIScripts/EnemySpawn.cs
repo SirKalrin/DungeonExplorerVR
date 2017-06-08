@@ -46,16 +46,17 @@ public class EnemySpawn : MonoBehaviour
         yield return new WaitForSeconds(coolDown);
         for (var i = 0; i < wave; i++)
         {
-            if (i >= spawnPointCount)
+            if (i < spawnPointCount)
             {
-                yield return SpawnCoroutine(wave - spawnPointCount);
-            }
-            else
-            {
-                var enemy = Instantiate(Enemy, 
+                var enemy = Instantiate(Enemy,
                     this.gameObject.transform.GetChild(i).position,
                     Quaternion.identity);
                 enemy.SetActive(true);
+            }
+            else if (i == spawnPointCount)
+            {
+                yield return SpawnCoroutine(wave - spawnPointCount);
+                break;
             }
         }
     }

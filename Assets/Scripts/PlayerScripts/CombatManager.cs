@@ -30,20 +30,17 @@ public class CombatManager : MonoBehaviour
 
     public void Hit(Stats attackerStats, Stats targetStats, bool headshot)
     {
-        if (attackerStats != targetStats)
+        int damage = _statsManager.GetCalculatedDamage(attackerStats);
+        if (headshot)
+            damage *= 10;
+        if (_statsManager.TakeDamage(targetStats, damage))
+            _statsManager.AddPoints(attackerStats, targetStats.MaxHealth);
+        Debug.Log("Health: " + targetStats.Health);
+
+        if (targetStats.transform.tag == "EnemyAI")
         {
-            int damage = _statsManager.GetCalculatedDamage(attackerStats);
-            if (headshot)
-                damage *= 10;
-            if (_statsManager.TakeDamage(targetStats, damage))
-                _statsManager.AddPoints(attackerStats, targetStats.MaxHealth);
-            Debug.Log("Health: " + targetStats.Health);
-            
-            if(targetStats.transform.tag == "EnemyAI")
-            {
-                // Aggroes attacker
-                targetStats.transform.GetComponent<AIController>().Target = attackerStats.transform.gameObject;
-            }
+            // Aggroes attacker
+            targetStats.transform.GetComponent<AIController>().Target = attackerStats.transform.gameObject;
         }
     }
 }

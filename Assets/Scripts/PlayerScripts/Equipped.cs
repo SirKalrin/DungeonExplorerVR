@@ -31,7 +31,6 @@ public class Equipped : MonoBehaviour
                 {
                     switchedItem = equipSpot.GetComponentInChildren<Item>().gameObject;
                     _statsManager.RemoveStats(_stats, switchedItem.GetComponent<Equipment>());
-                    GameObject.Destroy(switchedItem);
                 }
                 prefab.GetComponent<Item>().OwnerStats = _stats;
                 _statsManager.AddStats(_stats, prefab.GetComponent<Equipment>());
