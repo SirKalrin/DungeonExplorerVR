@@ -13,9 +13,10 @@ public class HitboxHit : MonoBehaviour
         if (collider.gameObject.tag == "Projectile")
         {
             var audioSource = gameObject.GetComponentInParent<AudioSource>();
-            if(!audioSource.isPlaying)
+            if(audioSource && !audioSource.isPlaying)
                 audioSource.Play();
             GameObject.FindGameObjectWithTag("GameController").GetComponent<CombatManager>().Hit(collider.gameObject.GetComponent<Item>().OwnerStats, gameObject.transform.parent.GetComponentInParent<Stats>(), isHead);
+            if (!collider.transform.parent)
             Destroy(collider.gameObject);
         }
     }
